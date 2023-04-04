@@ -1,4 +1,4 @@
-<script type="module">
+
 
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
@@ -16,4 +16,6 @@
 };
 
     const app = initializeApp(firebaseConfig);
-</script>
+     export const auth=getAuth (app);
+
+
