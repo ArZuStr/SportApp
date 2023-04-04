@@ -7,16 +7,17 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-// function AlertDialog() {
+function NonUserEventComponent() {
 //     const [open, setOpen] = React.useState(false);
 //
 //     const handleClickOpen = () => {
 //         setOpen(true);
 //     };
 //
-//     const handleClose = () => {
-//         setOpen(false);
+//     const handleJoinEvent = () => {
+//         setOpen(true);
 //     };
+
 
 
     return (
@@ -41,17 +42,20 @@ import DialogTitle from '@mui/material/DialogTitle';
 
                 <DialogContent>
                     <DialogContentText id="event-dialog-description">
-                        Description:
-                        Date: 25.04.2023
-                        Time: 18:00
-                        Participants: 5
+                        Description: <br />
+                        Date: 25.04.2023 <br />
+                        Time: 18:00 <br />
+                        Participants: 5 <br />
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleJoinEvent}>JOIN</Button>
-                    </Button>
+                    <Button id="div"
+                            variant="contained"
+                            sx={{ padding: "10px", margin: "30px" }}>JOIN</Button>
                 </DialogActions>
             {/*</Dialog>*/}
         </div>
-    );
+    )
 }
+
+export default NonUserEventComponent;
