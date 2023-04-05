@@ -23,7 +23,7 @@ export default function FormDialog() {
     return (
 
         <Box sx={{width:"100%"}}>
-            <Box display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%", padding:"2%", backgroundColor:"lightgrey"}}>
+            <Box display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
                 <Button variant="outlined" onClick={handleClickOpen}>
                    LOG IN
                 </Button>
