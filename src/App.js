@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,14 +7,17 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
-// import {db} from './config/firebase';
+import {db} from './config/firebase';
+import {collection, getDocs, addDoc} from "firebase/firestore";
 
 
 export default function FormDialog() {
     const [open, setOpen] = React.useState(false);
     const [open1, setOpen1] = React.useState(false);
-
+ const [users, setUsers] = useState([])
     const handleClickOpen = () => {
+        fetchUsers();
+
         setOpen(true);
     };
 
@@ -28,6 +31,18 @@ export default function FormDialog() {
     const handleClose1 = () => {
         setOpen1(false);
     };
+
+    async function fetchUsers() {
+        await getDocs(collection(db, 'User'))
+        .then((querySnapshot) => {
+            const newData = querySnapshot.docs
+                .map((doc) => ({...doc.data(), id: doc.id}));
+            setUsers(newData);
+            console.log(newData);
+        })
+    }
+
+    console.log(users)
 
     return (
 

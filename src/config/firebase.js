@@ -1,8 +1,8 @@
 
 
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-import {getFireStore} from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore';
 
 
 
@@ -16,6 +16,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db=getFireStore (app);
+export const db = getFirestore(app);
 
 
