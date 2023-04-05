@@ -9,8 +9,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
 // import {db} from './config/firebase';
 
+
 export default function FormDialog() {
     const [open, setOpen] = React.useState(false);
+    const [open1, setOpen1] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -18,6 +20,13 @@ export default function FormDialog() {
 
     const handleClose = () => {
         setOpen(false);
+    };
+    const handleClickOpen1 = () => {
+        setOpen1(true);
+    };
+
+    const handleClose1 = () => {
+        setOpen1(false);
     };
 
     return (
@@ -27,13 +36,14 @@ export default function FormDialog() {
                 <Button variant="outlined" onClick={handleClickOpen}>
                    LOG IN
                 </Button>
+                <Button variant="outlined" onClick={handleClickOpen1}>
+                    SIGN UP
+                </Button>
             </Box>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Log in</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        Please enter your email address and password here.
-                    </DialogContentText>
+
                     <TextField
                         autoFocus
                         margin="dense"
@@ -52,10 +62,68 @@ export default function FormDialog() {
                         fullWidth
                         variant="standard"
                     />
+
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleClose}>Log in</Button>
+                </DialogActions>
+            </Dialog>
+            <Dialog open={open1} onClose={handleClose1}>
+                <DialogTitle>Create an account</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Please enter your email address and password to create an account.
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="email"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="password"
+                        label="Password"
+                        type="password"
+                        fullWidth
+                        variant="standard"
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Name"
+                        type="name"
+                        fullWidth
+                        variant="standard"
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="lname"
+                        label="Lastname"
+                        type="lastname"
+                        fullWidth
+                        variant="standard"
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="location"
+                        label="Location"
+                        type="Location"
+                        fullWidth
+                        variant="standard"
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose1}>Cancel</Button>
+                    <Button onClick={handleClose1}>Create</Button>
                 </DialogActions>
             </Dialog>
         </Box>
