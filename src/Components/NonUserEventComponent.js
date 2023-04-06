@@ -43,9 +43,9 @@ function NonUserEventComponent() {
                 <DialogContent>
                     <DialogContentText id="event-dialog-description">
                         Description: <br />
-                        Date: 25.04.2023 <br />
-                        Time: 18:00 <br />
-                        Participants: 5 <br />
+                        Date: <br />
+                        Time: <br />
+                        Participants: <br />
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
