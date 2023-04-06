@@ -13,6 +13,10 @@
   }
 }
 
+.full-screen-map {
+  height: 100vh;
+}
+
 /*.App-header {*/
 /*  background-color: #282c34;*/
 /*  min-height: 10vh;*/
