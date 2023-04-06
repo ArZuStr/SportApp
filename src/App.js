@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import { Routes, Route } from "react-router-dom";
-import Home from "./Home"
+// import { Routes, Route } from "react-router-dom";
+import Map from "./Map"
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -97,11 +97,13 @@ function App() {
         </header>
 
         <main>
-            <Routes>
-                <Route path="/" element={ <Home events={events}/> } />
-                {/*<Route path="events" element={ <Products/> } />*/}
+            {/*<Routes>*/}
+            {/*    <Route path="/" element={ <Map events={events}/> } />*/}
+            {/*    /!*<Route path="events" element={ <Products/> } />*!/*/}
 
-            </Routes>
+            {/*</Routes>*/}
+
+            <Map events={events}/>
         </main>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Log in</DialogTitle>
