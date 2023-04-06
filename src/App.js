@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
-import React, {useState} from 'react';
+
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -9,74 +9,45 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
+
+
 import {db} from './config/firebase';
 import {collection, getDocs, addDoc} from "firebase/firestore";
 
+// import NonUserEventComponent from "./Components/NonUserEventComponent.js"
 
-export default function FormDialog() {
-    const [open, setOpen] = React.useState(false);
-    const [open1, setOpen1] = React.useState(false);
- const [users, setUsers] = useState([])
-    const handleClickOpen = () => {
-        fetchUsers();
 
-        setOpen(true);
-    };
+// export default function FormDialog() {
+//     const [open, setOpen] = React.useState(false);
+//     const [open1, setOpen1] = React.useState(false);
+//     const [users, setUsers] = useState([])
+//     const handleClickOpen = () => {
+//         fetchUsers();
+//
+//         setOpen(true);
+//     };
+// }
 
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogActions from "@mui/material/DialogActions";
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-
-import NonUserEventComponent from "./Components/NonUserEventComponent.js"
 
 
 //kaisa comment
 function App() {
 
-        const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [open1, setOpen1] = useState(false);
+    const [users, setUsers] = useState(false);
+    const [events, setEvents] = useState(false);
 
-        const handleOpen = () => {
-            setOpen(true);
-        };
-
-        const handleClose = () => {
-            setOpen(false);
-        };
-
-
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-
-        <main>
-            <Grid item xs={12} md={6}>
-                <Button
-                    id="div"
-                    variant="contained"
-                    sx={{ padding: "10px", margin: "30px" }}
-                    onClick={handleOpen}> EVENTS </Button>
-
-                <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle>Event Details</DialogTitle>
-                    <DialogContent>
-                        <NonUserEventComponent />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Close</Button>
-                    </DialogActions>
-                </Dialog>
-            </Grid>
-        </main>
-    </div>
-  );
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleClickOpen = () => {
+
+
+        setOpen(true);
+    };
+
     const handleClickOpen1 = () => {
         setOpen1(true);
     };
@@ -87,15 +58,33 @@ function App() {
 
     async function fetchUsers() {
         await getDocs(collection(db, 'User'))
-        .then((querySnapshot) => {
-            const newData = querySnapshot.docs
-                .map((doc) => ({...doc.data(), id: doc.id}));
-            setUsers(newData);
-            console.log(newData);
-        })
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({...doc.data(), id: doc.id}));
+                setUsers(newData);
+                //console.log(newData);
+            })
     }
 
+    async function fetchEvents() {
+        await getDocs(collection(db, 'Events'))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({...doc.data(), id: doc.id}));
+                setEvents(newData);
+                //console.log(newData);
+            })
+    }
+
+    useEffect(() => {
+        // Update the data (users. events) from Firestore
+        fetchUsers();
+        fetchEvents();
+    }, []); //empty deps make it run only once
+
     console.log(users)
+    console.log(events)
+
 
     return (
 
