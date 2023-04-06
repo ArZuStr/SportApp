@@ -41,9 +41,9 @@ function App() {
 
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = useState(false);
-    const [users, setUsers] = useState(false);
-    const [events, setEvents] = useState(false);
-    const [location, setLocation] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [events, setEvents] = useState([]);
+
 
     const handleClose = () => {
         setOpen(false);
@@ -81,25 +81,16 @@ function App() {
             })
     }
 
-    async function fetchLocation() {
-        await getDocs(collection(db, 'Events.location'))
-            .then((querySnapshot) => {
-                const newData = querySnapshot.docs
-                    .map((doc) => ({...doc.data(), id: doc.id}));
-                setLocation(newData);
-            })
-    }
 
     useEffect(() => {
         // Update the data (users. events) from Firestore
         fetchUsers();
         fetchEvents();
-        fetchLocation();
     }, []); //empty deps makes it run only once
 
     console.log(users)
     console.log(events)
-    console.log(location)
+
 
     return (
 
@@ -116,12 +107,12 @@ function App() {
                 attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
                 url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
 
-            {location.map((location, index) => (
+            {events.length > 0 && events.map((event, index) => (
                 <Marker
                     key={index}
-                    position={[location.lngLat[1], location.lngLat[0]]}>
+                    position={[event.lat, event.long]}>
                     <Popup>
-                        {location.name}<br />
+                        {event.venue}<br />
                     </Popup>
                 </Marker>
             ))}
