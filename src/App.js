@@ -25,10 +25,13 @@ function App() {
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
+    const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(false);
-
+    const [userIsLogged, setUserIsLogged] = useState(true);
     const [events, setEvents] = useState([]);
+
+    const [userId, setUserId] = useState([]);
+
 
 
     const handleClose = () => {
@@ -54,6 +57,15 @@ function App() {
     const handleClose2 = () => {
         setOpen2(false);
     };
+
+    const handleClickOpen3 = () => {
+        setOpen2(true);
+    };
+
+    const handleClose3 = () => {
+        setOpen2(false);
+    };
+
 
     async function fetchUsers() {
         await getDocs(collection(db, 'User'))
@@ -101,22 +113,28 @@ function App() {
                 display: "flex",
                 flexDirection: "row",}}>
                 <Box display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+
                     { userIsLogged === false && <Button variant="contained" onClick={handleClickOpen}>
                        LOG IN
                     </Button>}
+
                     { userIsLogged === true && <Button variant="contained" onClick={logUserOut}>
                         LOG OUT
                     </Button>}
-                    <Button variant="contained" onClick={handleClickOpen1}>
+
+                    { userIsLogged === true && <Button variant="contained" onClick={handleClickOpen3}>
+                        PROFILE
+                    </Button>}
+
+                    { userIsLogged === false &&<Button variant="contained" onClick={handleClickOpen1}>
                         SIGN UP
-                    </Button>
+                    </Button>}
 
                     <Button variant="contained" onClick={handleClickOpen2}>
                         EVENTS
                     </Button>
                 </Box>
             </Box>
-
         </header>
 
         <main>
@@ -229,6 +247,13 @@ function App() {
                 {/*    /!*<Button onClick={handleClose2}>Cancel</Button>*!/*/}
                 {/*    /!*        <Button onClick={handleClose2}>Log in</Button>*!/*/}
                 {/*</DialogActions>*/}
+            </Dialog>
+            <Dialog open={open3} onClose={handleClose3} fullWidth maxWidth="100%">
+                <DialogTitle>Profile</DialogTitle>
+                <DialogContent>
+                    { userIsLogged === true && <ViewProfileComponent users={userId}/>
+                    }
+                </DialogContent>
             </Dialog>
 
 
