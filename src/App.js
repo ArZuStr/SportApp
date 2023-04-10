@@ -14,6 +14,8 @@ import Box from '@mui/material/Box';
 
 import {db} from './config/firebase';
 import {collection, getDocs, addDoc} from "firebase/firestore";
+import EventListComponent from "./EventListComponent";
+import EventListComponentFullView from "./EventListComponentFullView";
 
 
 
@@ -22,7 +24,10 @@ function App() {
 
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = useState(false);
+    const [open2, setOpen2] = useState(false);
     const [users, setUsers] = useState([]);
+    const [userIsLogged, setUserIsLogged] = useState(true);
+
     const [events, setEvents] = useState([]);
 
 
@@ -40,6 +45,14 @@ function App() {
 
     const handleClose1 = () => {
         setOpen1(false);
+    };
+
+    const handleClickOpen2 = () => {
+        setOpen2(true);
+    };
+
+    const handleClose2 = () => {
+        setOpen2(false);
     };
 
     async function fetchUsers() {
@@ -62,6 +75,9 @@ function App() {
             })
     }
 
+    function logUserOut() {
+        setUserIsLogged(false)
+    }
 
     useEffect(() => {
         // Update the data (users. events) from Firestore
@@ -85,11 +101,18 @@ function App() {
                 display: "flex",
                 flexDirection: "row",}}>
                 <Box display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
-                    <Button variant="contained" onClick={handleClickOpen}>
+                    { userIsLogged === false && <Button variant="contained" onClick={handleClickOpen}>
                        LOG IN
-                    </Button>
+                    </Button>}
+                    { userIsLogged === true && <Button variant="contained" onClick={logUserOut}>
+                        LOG OUT
+                    </Button>}
                     <Button variant="contained" onClick={handleClickOpen1}>
                         SIGN UP
+                    </Button>
+
+                    <Button variant="contained" onClick={handleClickOpen2}>
+                        EVENTS
                     </Button>
                 </Box>
             </Box>
@@ -191,6 +214,24 @@ function App() {
                 <Button onClick={handleClose1}>Create</Button>
             </DialogActions>
         </Dialog>
+
+            <Dialog open={open2} onClose={handleClose2} fullWidth maxWidth="100%">
+                {/*<DialogTitle>Events</DialogTitle>*/}
+                <DialogContent>
+                    { userIsLogged === false &&
+                        <EventListComponent events={events}/>
+                    }
+                    { userIsLogged === true &&
+                        <EventListComponentFullView events={events}/>
+                    }
+                </DialogContent>
+                {/*<DialogActions>*/}
+                {/*    /!*<Button onClick={handleClose2}>Cancel</Button>*!/*/}
+                {/*    /!*        <Button onClick={handleClose2}>Log in</Button>*!/*/}
+                {/*</DialogActions>*/}
+            </Dialog>
+
+
         </div>
     );
 }

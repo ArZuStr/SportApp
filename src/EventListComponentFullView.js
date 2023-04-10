@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 
-function EventListComponent(props){
+
+function EventListComponentFullView(props){
     const eventsList =props.events
 
 
@@ -34,10 +34,8 @@ function EventListComponent(props){
                         {/*    iconPerformance={icon1}*/}
                         {/*/>*/}
                         <Paper elevation={5}>
-                            {event.type === "basketpall" && <SportsBasketballIcon />}
-                            {event.type === "basketpall" && <SportsBasketballIcon />}
                             <Typography variant="h2">{event.venue} </Typography>
-                            {/*<Typography variant="body">{event.description} </Typography>*/}
+                            <Typography variant="body">{event.description} </Typography>
                         </Paper>
 
                     </Grid>
@@ -48,4 +46,4 @@ function EventListComponent(props){
     );
 }
 
-export default EventListComponent;
+export default EventListComponentFullView;
