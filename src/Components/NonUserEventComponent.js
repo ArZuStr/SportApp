@@ -1,59 +1,30 @@
 import React, {useState} from "react";
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import SportsVolleyballIcon from '@mui/icons-material/SportsVolleyball';
+import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 
-
-function NonUserEventComponent() {
-//     const [open, setOpen] = React.useState(false);
-//
-//     const handleClickOpen = () => {
-//         setOpen(true);
-//     };
-//
-//     const handleJoinEvent = () => {
-//         setOpen(true);
-//     };
-
-
+function NonUserEventComponent(props) {
 
     return (
         <div>
-            {/*<Button variant="outlined" onClick={handleClickOpen}>*/}
-            {/*    Open alert dialog*/}
-            {/*</Button>*/}
-            {/*<Dialog*/}
-            {/*    open={open}*/}
-            {/*    onClose={handleClose}*/}
-            {/*    aria-labelledby="alert-dialog-title"*/}
-            {/*    aria-describedby="alert-dialog-description"*/}
-            {/*>*/}
+            <Box sx={{ position: "relative", top: 0, right: 0 }}>
+                {props.event.type.includes("basketball") && <SportsBasketballIcon sx={{ fontSize: 100, color:"#7C79FB", marginTop:"20px", backgroundColor: "white"}}  />}
+                {props.event.type.includes("volleyball") && <SportsVolleyballIcon sx={{ fontSize: 100, color:"#00CED1", marginTop:"20px", backgroundColor: "white"}} />}
+                {props.event.type.includes("discgolf") && <FiberSmartRecordIcon sx={{ fontSize: 100, color:"#FF4500", marginTop:"20px", backgroundColor: "white"}} />}
+                {props.event.type.includes("workout") && <FitnessCenterIcon sx={{ fontSize: 100, color:"#FEFE33", marginTop:"20px", backgroundColor: "white"}} />}
+                {props.event.type.includes("yoga") && <SelfImprovementIcon sx={{ fontSize: 100, color:"#00BFFF", marginTop:"20px", backgroundColor: "white"}} />}
+            </Box>
 
-                <DialogTitle id="event-dialog-title">
-                    {"VOLLEYBALL"}
-                </DialogTitle>
+            <Typography variant="h5" sx={{ textTransform: "uppercase", marginTop:"10px" }}> {props.event.title}</Typography><br/>
+            <Typography variant="h6"> Where: {props.event.venue}</Typography><br/>
+            <Typography variant="h6"> When: {props.event.date1} </Typography><br/>
+            <Typography variant="h6"> What: {props.event.description} </Typography><br/>
 
-                {/*<span className="material-icons-outlined">              //events icon is coming here*/}
-                {/*        sports_volleyball*/}
-                {/*</span>*/}
-
-                <DialogContent>
-                    <DialogContentText id="event-dialog-description">
-                        Description: <br />
-                        Date: <br />
-                        Time: <br />
-                        Participants: <br />
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button id="div"
-                            variant="contained"
-                            sx={{ padding: "10px", margin: "30px" }}>JOIN</Button>
-                </DialogActions>
-            {/*</Dialog>*/}
         </div>
     )
 }

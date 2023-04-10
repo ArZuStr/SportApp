@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
 import 'leaflet/dist/leaflet.css'
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import L from 'leaflet'
+import Dialog from "@mui/material/Dialog";
+import Typography from "@mui/material/Typography";
+import DialogContent from "@mui/material/DialogContent";
+import NonUserEventComponent from "./Components/NonUserEventComponent";
+import UserEventComponent from "./Components/UserEventComponent";
+import EventListComponent from "./EventListComponent";
+import EventListComponentFullView from "./EventListComponentFullView";
 
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -16,9 +23,9 @@ L.Icon.Default.mergeOptions({
 //kaisa comment
 function Map(props) {
 
+    const [userIsLogged, setUserIsLogged] = useState(true);
 
     return (
-
         <div style={{ position: "relative", height: "100vh" }}>
         <MapContainer
             className="full-screen-map"
@@ -36,13 +43,20 @@ function Map(props) {
                 <Marker
                     key={index}
                     position={[event.lat, event.long]}>
-                    <Popup>
-                        {event.venue}<br />
+                    <Popup className="kaisa-popup">
+
+                        {props.userStatus === false &&
+                            <NonUserEventComponent event={event} />
+                        }
+                        {props.userStatus === true &&
+                            <UserEventComponent event={event} />
+                        }
+
+
                     </Popup>
                 </Marker>
             ))}
         </MapContainer>
-
         </div>
     );
 }

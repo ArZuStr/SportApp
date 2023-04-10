@@ -123,10 +123,9 @@ function App() {
             {/*<Routes>*/}
             {/*    <Route path="/" element={ <Map events={events}/> } />*/}
             {/*    /!*<Route path="events" element={ <Products/> } />*!/*/}
-
             {/*</Routes>*/}
 
-            <Map events={events}/>
+            <Map events={events} userStatus={userIsLogged}/>
         </main>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Log in</DialogTitle>
