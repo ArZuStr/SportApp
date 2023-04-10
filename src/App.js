@@ -14,8 +14,8 @@ import Box from '@mui/material/Box';
 
 import {db} from './config/firebase';
 import {collection, getDocs, addDoc} from "firebase/firestore";
-import EventListComponent from "./EventListComponent";
-import EventListComponentFullView from "./EventListComponentFullView";
+import EventListComponent from "./Components/EventListComponent";
+import EventListComponentFullView from "./Components/EventListComponentFullView";
 
 
 
@@ -26,7 +26,7 @@ function App() {
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(true);
+    const [userIsLogged, setUserIsLogged] = useState(false);
 
     const [events, setEvents] = useState([]);
 
