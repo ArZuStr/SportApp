@@ -110,13 +110,51 @@ function App() {
                     <Button variant="contained" onClick={handleClickOpen1}>
                         SIGN UP
                     </Button>
+                </Box>
+            </Box>
 
-                    <Button variant="contained" onClick={handleClickOpen2}>
-                        EVENTS
+            <Box sx={{position: "absolute",
+                top: "10px",
+                right: "10px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <Box id="loginBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    <Button id="loginButton" variant="contained" onClick={handleClickOpen}>
+                        ⊕ PROFILE
                     </Button>
                 </Box>
             </Box>
 
+                    {/*<Button variant="contained" onClick={handleClickOpen2}>*/}
+                    {/*    EVENTS*/}
+                        <Box sx={{position: "absolute",
+                            bottom: "10px",
+                            right: "10px",
+                            zIndex: "1000",
+                            display: "flex",
+                            flexDirection: "row",}}>
+
+                            <Box id="eventsBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                                <Button id="eventsButton" variant="contained" onClick={handleClickOpen2}>
+                                    ⇦ EVENTS
+                                </Button>
+                            </Box>
+                        </Box>
+
+            <Box sx={{position: "absolute",
+                bottom: "10px",
+                left: "10px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+                <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
+                    <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
+                        MESSAGES ✏
+                    </Button>
+                </Box>
+            </Box>
         </header>
 
         <main>
