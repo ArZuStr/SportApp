@@ -33,9 +33,11 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(true);
+    const [userIsLogged, setUserIsLogged] = useState(false);
     const [events, setEvents] = useState([]);
-
+    const [email, setEmail] = useState(" ");
+    const [password, setPassword] = useState(" ");
+    const [loggedUser, setLoggedUser] = useState({})
 
     const handleClose = () => {
         setOpen(false);
@@ -95,14 +97,41 @@ function App() {
         setUserIsLogged(false)
     }
 
+
+    function handleLogIn() {
+        //console.log(email)
+        //console.log(password)
+
+        const foundObject = users.find(obj => {
+            return obj.email === email && obj.password === password;
+        });
+
+
+
+        // if (Object.keys(foundObject).length > 0 ) {
+        if (typeof foundObject === 'undefined') {
+            setUserIsLogged(false);
+            alert("email or password wrong");
+            //setOpen(false);
+
+        } else {
+            setUserIsLogged(true);
+            setOpen(false) ; //closes the login dialog
+            setLoggedUser(foundObject);
+        }
+
+      //  console.log(foundObject)
+
+    }
+
     useEffect(() => {
         // Update the data (users. events) from Firestore
         fetchUsers();
         fetchEvents();
     }, []); //empty deps makes it run only once
 
-    console.log(users)
-    console.log(events)
+    // console.log(users)
+    // console.log(events)
 
 
     return (
@@ -143,17 +172,6 @@ function App() {
         </header>
 
         <main>
-            {/*<Router>*/}
-            {/*    <Routes>*/}
-            {/*        <Route path="/users/:userId" component={<userProfile/>} />*/}
-            {/*</Routes>*/}
-            {/*    <Routes>*/}
-            {/*<Routes>*/}
-            {/*    <Route path="/" element={ <Map events={events}/> } />*/}
-            {/*    /!*<Route path="events" element={ <Products/> } />*!/*/}
-
-            {/*</Routes>*/}
-
             <Map events={events}/>
         </main>
         <Dialog open={open} onClose={handleClose}>
@@ -161,6 +179,7 @@ function App() {
             <DialogContent>
 
                 <TextField
+                    onChange={(e) => setEmail(e.target.value)}
                     autoFocus
                     margin="dense"
                     id="name"
@@ -170,6 +189,8 @@ function App() {
                     variant="standard"
                 />
                 <TextField
+                    onChange={(e) => setPassword(e.target.value)}
+
                     autoFocus
                     margin="dense"
                     id="password"
@@ -181,62 +202,18 @@ function App() {
 
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Log in</Button>
+                {/*<Button onClick={handleClose}>Cancel</Button>*/}
+                <Button onClick={handleLogIn}>Log in</Button>
             </DialogActions>
         </Dialog>
         <Dialog open={open1} onClose={handleClose1}>
             <DialogTitle>Create an account</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Please enter your email address and password to create an account.
-                </DialogContentText>
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="email"
-                    label="Email Address"
-                    type="email"
-                    fullWidth
-                    variant="standard"
-                />
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="password"
-                    label="Password"
-                    type="password"
-                    fullWidth
-                    variant="standard"
-                />
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Name"
-                    type="name"
-                    fullWidth
-                    variant="standard"
-                />
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="lname"
-                    label="Lastname"
-                    type="lastname"
-                    fullWidth
-                    variant="standard"
-                />
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="location"
-                    label="Location"
-                    type="Location"
-                    fullWidth
-                    variant="standard"
-                />
-            </DialogContent>
+
+
+
+
+
+
             <DialogActions>
                 <Button onClick={handleClose1}>Cancel</Button>
                 <Button onClick={handleClose1}>Create</Button>
@@ -260,8 +237,7 @@ function App() {
             <Dialog open={open3} onClose={handleClose3} fullWidth maxWidth="100%">
                 <DialogTitle>Profile</DialogTitle>
                 <DialogContent>
-                    { userIsLogged === true && <UserProfile users={userId}/>
-                    }
+                    {Object.keys(loggedUser).length > 0 && <UserProfile user={loggedUser}/>}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose3}>Cancel</Button>
