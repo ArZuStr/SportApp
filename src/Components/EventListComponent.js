@@ -15,8 +15,6 @@ import Button from "@mui/material/Button";
 function EventListComponent(props){
     const eventsList =props.events
 
-
-
     console.log(eventsList)
 
     return (
@@ -25,6 +23,8 @@ function EventListComponent(props){
             <Typography variant="h4" sx={{marginBottom:"20px", margin:"30px"}}>
                 <strong>EVENTS LIST</strong>
             </Typography>
+
+            <Button variant="contained" size="large" margin="30">CREATE AN EVENT</Button>
 
             <Grid container spacing={3}>
                 { eventsList.map((event, index) => (

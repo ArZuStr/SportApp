@@ -11,11 +11,8 @@ import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import Button from "@mui/material/Button";
 
 
-
 function EventListComponentFullView(props){
     const eventsList =props.events
-
-
 
     console.log(eventsList)
 
@@ -25,6 +22,8 @@ function EventListComponentFullView(props){
             <Typography variant="h4" sx={{marginBottom:"20px", margin:"30px"}}>
                 <strong>EVENTS LIST</strong>
             </Typography>
+
+            <Button variant="contained" size="large">CREATE AN EVENT</Button>
 
             <Grid container spacing={3}>
                 { eventsList.map((event, index) => (

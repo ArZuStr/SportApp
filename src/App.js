@@ -15,12 +15,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
 
-
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
-import Map from "./Map"
-
 
 
 //kaisa comment
@@ -70,7 +67,6 @@ function App() {
     };
 
 
-
     async function fetchUsers() {
         await getDocs(collection(db, 'User'))
             .then((querySnapshot) => {
@@ -103,8 +99,6 @@ function App() {
         const foundObject = users.find(obj => {
             return obj.email === email && obj.password === password;
         });
-
-
 
         // if (Object.keys(foundObject).length > 0 ) {
         if (typeof foundObject === 'undefined') {
@@ -158,7 +152,7 @@ function App() {
 
                     { userIsLogged === false &&<Button variant="contained" onClick={handleClickOpen1}>
                         SIGN UP
-                    </Button>
+                    </Button>}
                 </Box>
             </Box>
 
@@ -284,8 +278,6 @@ function App() {
                     <Button onClick={handleClose3}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-
-
         </div>
     );
 }

@@ -8,8 +8,6 @@ import Typography from "@mui/material/Typography";
 import DialogContent from "@mui/material/DialogContent";
 import NonUserEventComponent from "./Components/NonUserEventComponent";
 import UserEventComponent from "./Components/UserEventComponent";
-import EventListComponent from "./EventListComponent";
-import EventListComponentFullView from "./EventListComponentFullView";
 
 
 delete L.Icon.Default.prototype._getIconUrl;
