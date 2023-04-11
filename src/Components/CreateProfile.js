@@ -4,38 +4,23 @@ import {db} from '../config/firebase';
 
 import DialogContentText from "@mui/material/DialogContentText";
 import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+
 import DialogContent from "@mui/material/DialogContent";
 
-function CreateProfile() {
-    const [age, setAge] = useState(0);
-    const [email1, setEmail1] = useState(" ");
-    const [lastName1, setLastName1] = useState(" ");
-    const [location1, setLocation1] = useState(" ");
-    const [name, setName] = useState(" ");
-    const [preference, setPreference] = useState(" ");
-    const [username, setUserName] = useState(" ");
-    const [password1, setPassword1] = useState(" ");
-    const [loggedUser1, setLoggedUser1] = useState({})
+function CreateProfile(props) {
+    const [workout, setWorkout] = React.useState('volleyball');
 
 
 
-    async function addToFirebase() {
-        try {
-            const docRef = await addDoc(collection(db, "User"), {
-                username: username,
-                email: email1,
-                password: password1,
-                name: name,
-                lastName: lastName1,
-                age: age,
-                preference: preference,
-                location: location1
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
+
+    const handleChange = (event) => {
+        setWorkout(event.target.value);
+    };
 
 return (
 
@@ -96,16 +81,25 @@ return (
         type="number"
         fullWidth
         variant="standard"
+        onChange={handleAge}
     />
-    <TextField
-        autoFocus
-        margin="dense"
-        id="preference"
-        label="Preference"
-        type="checkbox"
-        fullWidth
-        variant="standard"
-    />
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <InputLabel id="demo-select-small">Workout Type</InputLabel>
+            <Select
+                labelId="demo-select-small"
+                id="demo-select-small"
+                value={workout}
+                label="Workout Type"
+                onChange={handleChange}
+            >
+                <MenuItem value="">
+                    <em>None</em>
+                </MenuItem>
+                <MenuItem value={"Volleyball"}>Volleyball</MenuItem>
+                <MenuItem value={"Basketball"}>Basketball</MenuItem>
+                <MenuItem value={"Yoga"}>Yoga</MenuItem>
+            </Select>
+        </FormControl>
     <TextField
         autoFocus
         margin="dense"

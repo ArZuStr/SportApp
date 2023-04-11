@@ -22,9 +22,7 @@ import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
 import CreateProfile from "./Components/CreateProfile";
-
 import Map from "./Map"
-import CreateProfile from "./Components/CreateProfile";
 
 
 
@@ -41,6 +39,24 @@ function App() {
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
     const [loggedUser, setLoggedUser] = useState({})
+
+    //CreateProfile const:
+
+    const [age, setAge] = useState(0);
+    const [email1, setEmail1] = useState(" ");
+    const [lastName1, setLastName1] = useState(" ");
+    const [location1, setLocation1] = useState(" ");
+    const [name, setName] = useState(" ");
+    const [preference, setPreference] = useState(" ");
+    const [username, setUserName] = useState(" ");
+    const [password1, setPassword1] = useState(" ");
+    const [loggedUser1, setLoggedUser1] = useState({})
+
+    const handleAge = (event) => {
+        setAge(event.target.value);
+    };
+
+
 
     const handleClose = () => {
         setOpen(false);
@@ -127,6 +143,23 @@ function App() {
 
     }
 
+
+    async function addToFirebase() {
+        try {
+            const docRef = await addDoc(collection(db, "User"), {
+                email: email1,
+                password: password1,
+                name: name,
+                lastName: lastName1,
+                age: age,
+                preference: preference,
+                location: location1
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    };
     function handleCreate() {
         addToFirebase();
         // optionally, you can also navigate to a new page or update the UI after the user is created
@@ -216,7 +249,7 @@ function App() {
         </Dialog>
         <Dialog open={open1} onClose={handleClose1}>
             <DialogTitle>Create an account</DialogTitle>
-                <CreateProfile/>
+                <CreateProfile age={age}/>
             <DialogActions>
                 <Button onClick={handleCreate}>Create</Button>
             </DialogActions>
