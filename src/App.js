@@ -21,7 +21,10 @@ import Box from '@mui/material/Box';
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
+import CreateProfile from "./Components/CreateProfile";
+
 import Map from "./Map"
+import CreateProfile from "./Components/CreateProfile";
 
 
 
@@ -124,6 +127,11 @@ function App() {
 
     }
 
+    function handleCreate() {
+        addToFirebase();
+        // optionally, you can also navigate to a new page or update the UI after the user is created
+    }
+
     useEffect(() => {
         // Update the data (users. events) from Firestore
         fetchUsers();
@@ -208,15 +216,9 @@ function App() {
         </Dialog>
         <Dialog open={open1} onClose={handleClose1}>
             <DialogTitle>Create an account</DialogTitle>
-
-
-
-
-
-
+                <CreateProfile/>
             <DialogActions>
-                <Button onClick={handleClose1}>Cancel</Button>
-                <Button onClick={handleClose1}>Create</Button>
+                <Button onClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
 
