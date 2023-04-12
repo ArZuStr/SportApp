@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import { db, storage} from './config/firebase';
-
+import WB_LOGO2 from './Icons/WB_LOGO2.gif';
 import {collection, getDocs, addDoc} from "firebase/firestore";
 
 
@@ -282,6 +282,17 @@ function App() {
         <div style={{ position: "relative", height: "100vh" }}>
 
         <header>
+            <Box sx={{
+                position: "absolute",
+                top: "0px",
+                left: "60px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <img id="LOGO2" src={WB_LOGO2}/>
+
+            </Box>
             <Box sx={{position: "absolute",
                 top: "10px",
                 right: "10px",
