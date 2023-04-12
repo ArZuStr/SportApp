@@ -19,6 +19,7 @@ import DialogActions from '@mui/material/DialogActions';
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "../config/firebase";
 import Geocode from "react-geocode";
+import MenuItem from "@mui/material/MenuItem";
 
 
 function EventListComponentFullView(props){
@@ -32,6 +33,7 @@ function EventListComponentFullView(props){
     //CreateEvent const:
     const [title, setTitle]= useState("")
     const [location2, setLocation2]= useState("")
+    const [city, setCity]= useState("")
     const [date, setDate]= useState(0)
     const [time, setTime]= useState(0)
     const [description, setDescription]= useState("")
@@ -53,14 +55,14 @@ function EventListComponentFullView(props){
 
         let data = {
             title: title,
-            venue: location2,
+            venue: location2 + " " + city,
             date1: moment(date).format("DD.MM.YYYY"),
             time1: time,
             description: description,
             lat: ltd,
             long: lngt,
             participants: 3,
-            type:["yoga"]
+            type: type
         }
 
         console.log(data)
@@ -78,7 +80,9 @@ function EventListComponentFullView(props){
     };
     async function handleCreate2() {
 
-        await Geocode.fromAddress(location2).then(
+        let loc = location2 + ", " + city
+
+        await Geocode.fromAddress(loc).then(
             (response) => {
                 const loc = response.results[0].geometry.location;
                 console.log(loc);
@@ -146,7 +150,6 @@ function EventListComponentFullView(props){
                 margin="dense"
                 id="title"
                 label="Title"
-                type="title"
                 fullWidth
                 variant="standard"
                 onChange={(event) => {setTitle(event.target.value)}}/>
@@ -155,12 +158,19 @@ function EventListComponentFullView(props){
                 autoFocus
                 margin="dense"
                 id="venue"
-                label="Location"
-                type="venue"
+                label="Address"
                 fullWidth
                 variant="standard"
                 onChange={(event) => {setLocation2(event.target.value)}}/>
 
+            <TextField
+                autoFocus
+                margin="dense"
+                id="venue"
+                label="City"
+                fullWidth
+                variant="standard"
+                onChange={(event) => {setCity(event.target.value)}}/>
             <TextField
                 autoFocus
                 margin="dense"
@@ -184,7 +194,6 @@ function EventListComponentFullView(props){
                 margin="dense"
                 id="description"
                 label="Description"
-                type="description"
                 fullWidth
                 variant="standard"
                 onChange={(event) => {setDescription(event.target.value)}}/>
@@ -194,12 +203,16 @@ function EventListComponentFullView(props){
                 margin="dense"
                 id="type"
                 label="Type"
-                type="select"
+                select
                 fullWidth
                 variant="standard"
                 onChange={(event) => {setType([event.target.value])}}
             >
-
+                <MenuItem value={"volleyball"}>Volleyball</MenuItem>
+                <MenuItem value={"basketball"}>Basketball</MenuItem>
+                <MenuItem value={"yoga"}>Yoga</MenuItem>
+                <MenuItem value={"discgolf"}>Discgolf</MenuItem>
+                <MenuItem value={"workout"}>Workout</MenuItem>
             </TextField>
 
 
