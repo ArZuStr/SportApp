@@ -56,55 +56,63 @@ function App() {
     const [password1, setPassword1] = useState(" ");
 
 
-
-
     //Lisa siia iga väli, et regada FireStores:
     // const handleAge = (event) => {
     //     setAge(event.target.value);
     // };
 
 
-
+///handles "LOG IN" dialoq:
     const handleClose = () => {
         setOpen(false);
     };
 
+
+///Handles the "LOG IN" button:
     const handleClickOpen = () => {
         setOpen(true);
     };
 
 
-
+///Handles "SIGN UP" button and opens it:
     const handleClickOpen1 = () => {
         setOpen1(true);
     };
 
+///Handles "CREATE" button in a dialog, where you create and account:
     const handleClose1 = () => {
         setOpen1(false);
     };
 
-
-
+///Handles "EVENTS" button:
     const handleClickOpen2 = () => {
         setOpen2(true);
     };
 
+///Handles EVENTS LIST dialog, where is "CANCEL" button:
     const handleClose2 = () => {
         setOpen2(false);
     };
 
-
-
+///Handles "PROFILE" button:
     const handleClickOpen3 = () => {
         setOpen3(true);
     };
 
+///Handles "PROFILE" dialog:
     const handleClose3 = () => {
         setOpen3(false);
     };
 
 
 
+///Handles "LOG OUT" button:
+    function logUserOut() {
+        setUserIsLogged(false)
+    }
+
+
+///Getting info from Firestore:
     async function fetchUsers() {
         await getDocs(collection(db, 'User'))
             .then((querySnapshot) => {
@@ -136,11 +144,7 @@ function App() {
     // console.log(events)
 
 
-    function logUserOut() {
-        setUserIsLogged(false)
-    }
-
-///Handles the LOG IN button, where it checks if email and password is filled and existing in Firestore:
+///Handles the "LOG IN" button, where it checks if email and password is filled and existing in Firestore:
     function handleLogIn() {
         //console.log(email)
         //console.log(password)
@@ -191,7 +195,7 @@ function App() {
 
 
 
-    ///This function is to manage "create" button that creates new user with a profile:
+///This function is to manage "create" button that creates new user with a profile:
     function handleCreate() {
 
         // Check if email, password, and name fields are not empty
@@ -238,9 +242,6 @@ function App() {
         // optionally, you can also navigate to a new page or update the UI after the user is created
     }
 
-
-
-    ////
 
 
 
