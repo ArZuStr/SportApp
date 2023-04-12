@@ -50,7 +50,6 @@ function EventListComponentFullView(props){
         setOpen4(false);
     };
 
-
     async function addToFirebase2(ltd, lngt) {
 
         let data = {
@@ -69,7 +68,6 @@ function EventListComponentFullView(props){
         try {
             const docRef = await addDoc(collection(db, "Events"), data);
             console.log("Document written with ID: ", docRef.id);
-
 
             setOpen4(false)
             window.location.reload()
@@ -90,18 +88,12 @@ function EventListComponentFullView(props){
                 // setLng(loc.lng)
 
                 addToFirebase2(loc.lat, loc.lng);
-
-
-
             },
             (error) => {
                 console.error(error);
             }
         );
         //setOpen4(false)
-
-
-        // optionally, you can also navigate to a new page or update the UI after the user is created
     }
 
     console.log(lat)
