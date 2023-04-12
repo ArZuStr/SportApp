@@ -19,15 +19,9 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-
-
-
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
-import Map from "./Map"
-
-
 
 //kaisa comment
 function App() {
@@ -37,7 +31,7 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(false);
+    const [userIsLogged, setUserIsLogged] = useState(true);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -67,7 +61,6 @@ function App() {
     // const handleAge = (event) => {
     //     setAge(event.target.value);
     // };
-
 
 
     const handleClose = () => {
@@ -103,7 +96,6 @@ function App() {
     };
 
 
-
     async function fetchUsers() {
         await getDocs(collection(db, 'User'))
             .then((querySnapshot) => {
@@ -128,7 +120,6 @@ function App() {
         setUserIsLogged(false)
     }
 
-
     function handleLogIn() {
         //console.log(email)
         //console.log(password)
@@ -150,7 +141,6 @@ function App() {
         }
 
       //  console.log(foundObject)
-
     }
 
 
