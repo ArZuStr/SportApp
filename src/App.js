@@ -17,7 +17,11 @@ import {collection, getDocs, addDoc} from "firebase/firestore";
 import EventListComponent from "./EventListComponent";
 import EventListComponentFullView from "./EventListComponentFullView";
 
+import MessageIcon from '@mui/icons-material/Message';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import WB_LOGO1 from './Images/WB_LOGO1.png';
 
 //kaisa comment
 function App() {
@@ -94,25 +98,57 @@ function App() {
         <div style={{ position: "relative", height: "100vh" }}>
 
         <header>
+
+            <Box sx={{
+                position: "absolute",
+                top: "100px",
+                left: "118px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <img id="LOGO" src={WB_LOGO1}/>
+
+            </Box>
+
             <Box sx={{position: "absolute",
                 top: "10px",
                 right: "10px",
                 zIndex: "1000",
                 display: "flex",
                 flexDirection: "row",}}>
-                <Box display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
-                    { userIsLogged === false && <Button variant="contained" onClick={handleClickOpen}>
-                       LOG IN
-                    </Button>}
-                    { userIsLogged === true && <Button variant="contained" onClick={logUserOut}>
-                        LOG OUT
-                    </Button>}
-                    <Button variant="contained" onClick={handleClickOpen1}>
-                        SIGN UP
-                    </Button>
 
-                    <Button variant="contained" onClick={handleClickOpen2}>
-                        EVENTS
+                <Box id="loginBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    <Button id="loginButton" variant="contained" onClick={handleClickOpen}>
+                        <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/> LOG IN
+                    </Button>
+                </Box>
+            </Box>
+
+            <Box sx={{position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <Box id="eventsBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    <Button id="eventsButton" variant="contained" onClick={handleClickOpen}>
+                        <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/> EVENTS
+                    </Button>
+                </Box>
+            </Box>
+
+            <Box sx={{position: "absolute",
+                bottom: "10px",
+                left: "10px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
+                    <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
+                        MESSAGES <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
                     </Button>
                 </Box>
             </Box>

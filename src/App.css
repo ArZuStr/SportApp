@@ -17,6 +17,16 @@
   height: 100vh;
 }
 
+/*.App-header {*/
+/*  background-color: #282c34;*/
+/*  min-height: 10vh;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  font-size: calc(10px + 2vmin);*/
+/*  color: white;*/
+/*}*/
 
 .App-link {
   color: #61dafb;
@@ -31,7 +41,92 @@
   }
 }
 
-.kaisa-popup {
-  width: 30vw;
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.full-screen-map {
+  height: 100vh;
+}
+
+/*.App-header {*/
+/*  background-color: #282c34;*/
+/*  min-height: 10vh;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  font-size: calc(10px + 2vmin);*/
+/*  color: white;*/
+/*}*/
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#eventsButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 25px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
+}
+
+#eventsBox {
+  padding-right: 60px;
+  padding-bottom: 60px;
+}
+
+#loginButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 25px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
+}
+
+#loginBox {
+  padding-right: 60px;
+  padding-top: 60px;
+}
+
+#chatButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 25px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
+
+}
+
+#chatBox {
+  padding-left: 60px;
+  padding-bottom: 60px;
+
+}
+
+#LOGO {
+  max-height: 150px;
+  background: transparent 20%;
 
 }
