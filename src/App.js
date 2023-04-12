@@ -45,8 +45,7 @@ function App() {
     const [password, setPassword] = useState(" ");
     const [loggedUser, setLoggedUser] = useState({})
 
-    //CreateProfile const:
-
+    //CreateProfile const (SIGN UP):
     const [age, setAge] = useState(0);
     const [email1, setEmail1] = useState(" ");
     const [lastName1, setLastName1] = useState(" ");
@@ -55,14 +54,16 @@ function App() {
     const [preference, setPreference] = useState(" ");
     const [username, setUserName] = useState(" ");
     const [password1, setPassword1] = useState(" ");
-    const [loggedUser1, setLoggedUser1] = useState({})
+    const [loggedUser1, setLoggedUser1] = useState({ })
 
-    const [workout, setWorkout] = React.useState(' ');
+    //const [workout, setWorkout] = React.useState(" ");
 
+/*
 
     const handleWorkout = (event) => {
         setWorkout(event.target.value);
     };
+*/
 
 
     //Lisa siia iga väli, et regada FireStores
@@ -163,6 +164,7 @@ function App() {
             const docRef = await addDoc(collection(db, "User"), {
                 email: email1,
                 password: password1,
+                username: username,
                 name: name,
                 lastName: lastName1,
                 age: age,
@@ -170,12 +172,36 @@ function App() {
                 location: location1
             });
             console.log("Document written with ID: ", docRef.id);
+            alert("Congratulations! You are signed up!");
         } catch (e) {
             console.error("Error adding document: ", e);
+            alert("We had a problem. Try again.");
+
         }
     };
     function handleCreate() {
+
         addToFirebase();
+
+        const foundObject1 = {
+            email: email1,
+            username: username,
+            password: password1,
+            name: name,
+            lastName: lastName1,
+            age: age,
+            preference: preference,
+            location: location1
+
+        };
+
+
+        setUserIsLogged(true);
+        setLoggedUser(foundObject1)
+        setOpen1(false);
+
+
+
         // optionally, you can also navigate to a new page or update the UI after the user is created
     }
 
@@ -186,7 +212,7 @@ function App() {
         fetchEvents();
     }, []); //empty deps makes it run only once
 
-    // console.log(users)
+    console.log(users)
     // console.log(events)
 
 
@@ -338,15 +364,17 @@ function App() {
                     <Select
                         labelId="demo-select-small"
                         id="demo-select-small"
-                        value={workout}
+                        value={preference}
                         label="Workout Type"
-                        onChange={handleWorkout}
+
+                        onChange={(event) => {setPreference(event.target.value)}}
+
                     >
-                        <MenuItem value={"volleyball"}>Volleyball</MenuItem>
-                        <MenuItem value={"basketball"}>Basketball</MenuItem>
-                        <MenuItem value={"yoga"}>Yoga</MenuItem>
-                        <MenuItem value={"discgolf"}>Discgolf</MenuItem>
-                        <MenuItem value={"workout"}>Workout</MenuItem>
+                        <MenuItem value={"Volleyball"}>Volleyball</MenuItem>
+                        <MenuItem value={"Basketball"}>Basketball</MenuItem>
+                        <MenuItem value={"Yoga"}>Yoga</MenuItem>
+                        <MenuItem value={"Discgolf"}>Discgolf</MenuItem>
+                        <MenuItem value={"Workout"}>Workout</MenuItem>
 
                     </Select>
                 </FormControl>
@@ -355,9 +383,11 @@ function App() {
                     margin="dense"
                     id="location"
                     label="Location"
-                    type="Location"
+                    type="text"
                     fullWidth
                     variant="standard"
+                    onChange={(event) => {setLocation1(event.target.value)}}
+
                 />
             </DialogContent>
             <DialogActions>
