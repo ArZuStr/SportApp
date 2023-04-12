@@ -37,6 +37,8 @@ function EventListComponentFullView(props){
     const [description, setDescription]= useState("")
     const [lat, setLat]= useState("")
     const [lng, setLng]= useState("")
+    const [type, setType]= useState([])
+
 
     const [open4, setOpen4] = useState(false);
     const handleClickOpen4 = () => {
@@ -49,18 +51,27 @@ function EventListComponentFullView(props){
 
     async function addToFirebase2(ltd, lngt) {
 
+        let data = {
+            title: title,
+            venue: location2,
+            date1: moment(date).format("DD.MM.YYYY"),
+            time1: time,
+            description: description,
+            lat: ltd,
+            long: lngt,
+            participants: 3,
+            type:["yoga"]
+        }
+
+        console.log(data)
         try {
-            const docRef = await addDoc(collection(db, "Events"), {
-                title: title,
-                venue: location2,
-                date1: moment(date).format("DD.MM.YYYY"),
-                time1: time,
-                description: description,
-                lat: ltd,
-                long: lngt,
-                type: ["yoga"]
-            });
+            const docRef = await addDoc(collection(db, "Events"), data);
             console.log("Document written with ID: ", docRef.id);
+
+
+            setOpen4(false)
+            window.location.reload()
+
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -83,8 +94,8 @@ function EventListComponentFullView(props){
                 console.error(error);
             }
         );
-        setOpen4(false)
-        window.location.reload()
+        //setOpen4(false)
+
 
         // optionally, you can also navigate to a new page or update the UI after the user is created
     }
@@ -177,6 +188,20 @@ function EventListComponentFullView(props){
                 fullWidth
                 variant="standard"
                 onChange={(event) => {setDescription(event.target.value)}}/>
+
+            <TextField
+                autoFocus
+                margin="dense"
+                id="type"
+                label="Type"
+                type="select"
+                fullWidth
+                variant="standard"
+                onChange={(event) => {setType([event.target.value])}}
+            >
+
+            </TextField>
+
 
                 <DialogActions>
                     <Button onClick={handleClose4}>Cancel</Button>
