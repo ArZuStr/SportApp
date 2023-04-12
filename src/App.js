@@ -54,19 +54,11 @@ function App() {
     const [preference, setPreference] = useState(" ");
     const [username, setUserName] = useState(" ");
     const [password1, setPassword1] = useState(" ");
-    const [loggedUser1, setLoggedUser1] = useState({ })
-
-    //const [workout, setWorkout] = React.useState(" ");
-
-/*
-
-    const handleWorkout = (event) => {
-        setWorkout(event.target.value);
-    };
-*/
 
 
-    //Lisa siia iga väli, et regada FireStores
+
+
+    //Lisa siia iga väli, et regada FireStores:
     // const handleAge = (event) => {
     //     setAge(event.target.value);
     // };
@@ -81,6 +73,8 @@ function App() {
         setOpen(true);
     };
 
+
+
     const handleClickOpen1 = () => {
         setOpen1(true);
     };
@@ -89,6 +83,8 @@ function App() {
         setOpen1(false);
     };
 
+
+
     const handleClickOpen2 = () => {
         setOpen2(true);
     };
@@ -96,6 +92,8 @@ function App() {
     const handleClose2 = () => {
         setOpen2(false);
     };
+
+
 
     const handleClickOpen3 = () => {
         setOpen3(true);
@@ -127,11 +125,22 @@ function App() {
             })
     }
 
+
+    useEffect(() => {
+        // Update the data (users. events) from Firestore
+        fetchUsers();
+        fetchEvents();
+    }, []); //empty deps makes it run only once
+
+    console.log(users)
+    // console.log(events)
+
+
     function logUserOut() {
         setUserIsLogged(false)
     }
 
-
+///Handles the LOG IN button, where it checks if email and password is filled and existing in Firestore:
     function handleLogIn() {
         //console.log(email)
         //console.log(password)
@@ -158,7 +167,7 @@ function App() {
 
     }
 
-
+///This part checks that when You click on SIGN UP button, you are storing all the data to Firestore after filling all the "create profile" fields:
     async function addToFirebase() {
         try {
             const docRef = await addDoc(collection(db, "User"), {
@@ -179,10 +188,33 @@ function App() {
 
         }
     };
+
+
+
+    ///This function is to manage "create" button that creates new user with a profile:
     function handleCreate() {
 
-        addToFirebase();
+        // Check if email, password, and name fields are not empty
+        if (email1.trim() === '' || password1.trim() === '' || name.trim() === '') {
+            alert('Email, password, and name fields are required');
+            return;
+        }
 
+        // Check if email is valid
+        if (!email1.includes('@')) {
+            alert('Email address is not valid');
+            return;
+        }
+
+        // Check if password is at least 8 characters long and contains a mix of letters, numbers, and symbols
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+        if (!passwordRegex.test(password1)) {
+            alert('Password must be at least 8 characters long and contain a mix of letters, numbers, and symbols');
+            return;
+        }
+
+
+        //If all correct, sends info to database:
         const foundObject1 = {
             email: email1,
             username: username,
@@ -192,28 +224,26 @@ function App() {
             age: age,
             preference: preference,
             location: location1
-
         };
 
+        //adds info to Firestore
+        addToFirebase();
 
+
+        //changes the states:
         setUserIsLogged(true);
-        setLoggedUser(foundObject1)
+        setLoggedUser(foundObject1);
         setOpen1(false);
-
-
 
         // optionally, you can also navigate to a new page or update the UI after the user is created
     }
 
 
-    useEffect(() => {
-        // Update the data (users. events) from Firestore
-        fetchUsers();
-        fetchEvents();
-    }, []); //empty deps makes it run only once
 
-    console.log(users)
-    // console.log(events)
+    ////
+
+
+
 
 
     return (
@@ -306,9 +336,9 @@ function App() {
 
                 />
                 <TextField
-                    autoFocus
+                    required
+                    id="filled-required"
                     margin="dense"
-                    id="email"
                     label="Email Address"
                     type="email"
                     fullWidth
@@ -317,9 +347,9 @@ function App() {
 
                 />
                 <TextField
-                    autoFocus
+                    required
+                    id="filled-required"
                     margin="dense"
-                    id="password"
                     label="Password"
                     type="password"
                     fullWidth
@@ -328,9 +358,9 @@ function App() {
 
                 />
                 <TextField
-                    autoFocus
+                    required
+                    id="filled-required"
                     margin="dense"
-                    id="name"
                     label="Name"
                     type="name"
                     fullWidth
