@@ -50,7 +50,6 @@ function Map(props) {
                             <UserEventComponent event={event} />
                         }
 
-
                     </Popup>
                 </Marker>
             ))}
