@@ -24,8 +24,6 @@ function EventListComponent(props){
                 <strong>EVENTS LIST</strong>
             </Typography>
 
-            <Button variant="contained" size="large" margin="30">CREATE AN EVENT</Button>
-
             <Grid container spacing={3}>
                 { eventsList.map((event, index) => (
                     <Grid item sm={12} md={12} key={index} sx={{margin:"30px"}}>

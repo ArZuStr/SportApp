@@ -28,7 +28,7 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(false);
+    const [userIsLogged, setUserIsLogged] = useState(true);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -243,9 +243,6 @@ function App() {
         </Dialog>
         <Dialog open={open1} onClose={handleClose1}>
             <DialogTitle>Create an account</DialogTitle>
-
-
-
 
 
 
