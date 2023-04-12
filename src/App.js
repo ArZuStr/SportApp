@@ -3,6 +3,7 @@ import './App.css';
 import {db} from './config/firebase';
 import {collection, getDocs, addDoc} from "firebase/firestore";
 
+
 // import { Routes, Route } from "react-router-dom";
 //import { BrowserRouter as Routes, Router, Route } from "react-router-dom";
 
@@ -20,10 +21,12 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import MessageIcon from '@mui/icons-material/Message';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-
-
+//COMPONENTS:
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
