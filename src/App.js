@@ -14,10 +14,19 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+
+
+
 
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
+import Map from "./Map"
+
 
 
 //kaisa comment
@@ -28,11 +37,38 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(true);
+    const [userIsLogged, setUserIsLogged] = useState(false);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
     const [loggedUser, setLoggedUser] = useState({})
+
+    //CreateProfile const:
+
+    const [age, setAge] = useState(0);
+    const [email1, setEmail1] = useState(" ");
+    const [lastName1, setLastName1] = useState(" ");
+    const [location1, setLocation1] = useState(" ");
+    const [name, setName] = useState(" ");
+    const [preference, setPreference] = useState(" ");
+    const [username, setUserName] = useState(" ");
+    const [password1, setPassword1] = useState(" ");
+    const [loggedUser1, setLoggedUser1] = useState({})
+
+    const [workout, setWorkout] = React.useState(' ');
+
+
+    const handleWorkout = (event) => {
+        setWorkout(event.target.value);
+    };
+
+
+    //Lisa siia iga väli, et regada FireStores
+    // const handleAge = (event) => {
+    //     setAge(event.target.value);
+    // };
+
+
 
     const handleClose = () => {
         setOpen(false);
@@ -65,6 +101,7 @@ function App() {
     const handleClose3 = () => {
         setOpen3(false);
     };
+
 
 
     async function fetchUsers() {
@@ -115,6 +152,29 @@ function App() {
       //  console.log(foundObject)
 
     }
+
+
+    async function addToFirebase() {
+        try {
+            const docRef = await addDoc(collection(db, "User"), {
+                email: email1,
+                password: password1,
+                name: name,
+                lastName: lastName1,
+                age: age,
+                preference: preference,
+                location: location1
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    };
+    function handleCreate() {
+        addToFirebase();
+        // optionally, you can also navigate to a new page or update the UI after the user is created
+    }
+
 
     useEffect(() => {
         // Update the data (users. events) from Firestore
@@ -243,12 +303,104 @@ function App() {
         </Dialog>
         <Dialog open={open1} onClose={handleClose1}>
             <DialogTitle>Create an account</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Please enter your email address and password to create an account.
+                </DialogContentText>
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="username"
+                    label="Username"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setUserName(event.target.value)}}
 
+                />
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="email"
+                    label="Email Address"
+                    type="email"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setEmail1(event.target.value)}}
 
+                />
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="password"
+                    label="Password"
+                    type="password"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setPassword1(event.target.value)}}
 
+                />
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Name"
+                    type="name"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setName(event.target.value)}}
+
+                />
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="lname"
+                    label="Lastname"
+                    type="lastname"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setLastName1(event.target.value)}}
+
+                />
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="age"
+                    label="Age"
+                    type="number"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setAge(event.target.value)}}
+                />
+                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                    <InputLabel id="demo-select-small">Workout Type</InputLabel>
+                    <Select
+                        labelId="demo-select-small"
+                        id="demo-select-small"
+                        value={workout}
+                        label="Workout Type"
+                        onChange={handleWorkout}
+                    >
+                        <MenuItem value={"volleyball"}>Volleyball</MenuItem>
+                        <MenuItem value={"basketball"}>Basketball</MenuItem>
+                        <MenuItem value={"yoga"}>Yoga</MenuItem>
+                        <MenuItem value={"discgolf"}>Discgolf</MenuItem>
+                        <MenuItem value={"workout"}>Workout</MenuItem>
+
+                    </Select>
+                </FormControl>
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="location"
+                    label="Location"
+                    type="Location"
+                    fullWidth
+                    variant="standard"
+                />
+            </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose1}>Cancel</Button>
-                <Button onClick={handleClose1}>Create</Button>
+                <Button onClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
 
@@ -275,6 +427,8 @@ function App() {
                     <Button onClick={handleClose3}>Cancel</Button>
                 </DialogActions>
             </Dialog>
+
+
         </div>
     );
 }
