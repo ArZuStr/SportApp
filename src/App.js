@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import {db} from './config/firebase';
+import { db, storage} from './config/firebase';
+
 import {collection, getDocs, addDoc} from "firebase/firestore";
 
 
@@ -26,6 +27,9 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+
 //COMPONENTS:
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
@@ -42,7 +46,7 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(false);
+    const [userIsLogged, setUserIsLogged] = useState(true);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -58,6 +62,26 @@ function App() {
     const [username, setUserName] = useState(" ");
     const [password1, setPassword1] = useState(" ");
 
+
+    const [newProfilePic, setNewProfilePic] = useState("")
+    const [ProfilePicUpload, setProfilePicUpload] = useState(null)
+
+
+    //Returns url of the picture and gives the value to useState setNewProfilePic:
+    const upLoadProfilePic = () => {
+        if (ProfilePicUpload == null)
+            return;
+        const imageRef = ref(storage, `images/${ProfilePicUpload.name + v4() }`);
+        uploadBytes(imageRef, ProfilePicUpload).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((url) => {
+                    setNewProfilePic(url);
+                   // setIsProfilePicUploaded(true);
+
+                })
+
+            }
+        )
+    }
 
     //Lisa siia iga väli, et regada FireStores:
     // const handleAge = (event) => {
@@ -82,7 +106,7 @@ function App() {
         setOpen1(true);
     };
 
-///Handles "CREATE" button in a dialog, where you create and account:
+///Handles "CREATE" button in a dialog, where you create an account:
     const handleClose1 = () => {
         setOpen1(false);
     };
@@ -185,7 +209,8 @@ function App() {
                 lastName: lastName1,
                 age: age,
                 preference: preference,
-                location: location1
+                location: location1,
+                profile_pic: newProfilePic,
             });
             console.log("Document written with ID: ", docRef.id);
             alert("Congratulations! You are signed up!");
@@ -230,7 +255,9 @@ function App() {
             lastName: lastName1,
             age: age,
             preference: preference,
-            location: location1
+            location: location1,
+            profile_pic: newProfilePic,
+
         };
 
         //adds info to Firestore
@@ -261,15 +288,17 @@ function App() {
                 zIndex: "1000",
                 display: "flex",
                 flexDirection: "row",}}>
-                <Box display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
-
-                    { userIsLogged === false && <Button variant="contained" onClick={handleClickOpen}>
+                <Box id="loginBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    { userIsLogged === false && <Button id="loginButton" variant="contained" onClick={handleClickOpen}>
+                        <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
                        LOG IN
                     </Button>}
 
-                    { userIsLogged === true && <Button variant="contained" onClick={logUserOut}>
+                    { userIsLogged === true && <Button  id="loginButton" variant="contained" onClick={logUserOut}>
+                        <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
                         LOG OUT
                     </Button>}
+
 
                     { userIsLogged === true && <Button variant="contained" onClick={handleClickOpen3}>
                         PROFILE
@@ -279,12 +308,38 @@ function App() {
                     { userIsLogged === false &&<Button variant="contained" onClick={handleClickOpen1}>
                         SIGN UP
                     </Button>}
+                </Box>
+            </Box>
 
-                    <Button variant="contained" onClick={handleClickOpen2}>
-                        EVENTS
+            <Box            sx={{position: "absolute",
+                            bottom: "10px",
+                            right: "10px",
+                            zIndex: "1000",
+                            display: "flex",
+                            flexDirection: "row",}}>
+
+                <Box id="eventsBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    <Button id="eventsButton" variant="contained" onClick={handleClickOpen2}>
+                        <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
+                            EVENTS
                     </Button>
                 </Box>
             </Box>
+
+            <Box sx={{position: "absolute",
+                bottom: "10px",
+                left: "10px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
+                    <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
+                        MESSAGES <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
+                    </Button>
+                </Box>
+            </Box>
+
         </header>
 
         <main>
@@ -411,6 +466,7 @@ function App() {
                         <MenuItem value={"Workout"}>Workout</MenuItem>
 
                     </Select>
+
                 </FormControl>
                 <TextField
                     autoFocus
@@ -423,6 +479,13 @@ function App() {
                     onChange={(event) => {setLocation1(event.target.value)}}
 
                 />
+                <label htmlFor="profilePic">Profile picture:</label>
+                <input placeholder="Profile picture" type="file" id="profilePic"
+                       onChange={(e) => setProfilePicUpload(e.target.files[0])} />
+                <br />
+                <Button variant="contained" size="small" sx={{marginLeft:"30px", marginTop:"20px"}} onClick={upLoadProfilePic}>
+                    Upload picture
+                </Button>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleCreate}>Create</Button>

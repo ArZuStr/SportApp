@@ -5,6 +5,7 @@ function UserProfile(props) {
 
     return (
         <div>
+            <img src={props.user.profile_pic}></img>
             <h1>{props.user.name}'s Profile</h1>
             <p>Username: {props.user.username}</p>
             <p>Age: {props.user.age}</p>

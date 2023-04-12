@@ -1,4 +1,12 @@
+.App {
+  text-align: center;
+}
 
+
+
+.full-screen-map {
+  height: 100vh;
+}
 #eventsButton {
   font-family: "Helvetica Diagonal BQ";
   font-size: 25px;
