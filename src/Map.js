@@ -22,7 +22,7 @@ L.Icon.Default.mergeOptions({
 function Map(props) {
 
     const [userIsLogged, setUserIsLogged] = useState(true);
-
+console.log(props.events)
     return (
         <div style={{ position: "relative", height: "100vh" }}>
         <MapContainer

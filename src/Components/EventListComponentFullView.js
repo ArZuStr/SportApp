@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import moment from "moment";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -17,11 +18,16 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "../config/firebase";
+import Geocode from "react-geocode";
 
 
 function EventListComponentFullView(props){
     const eventsList =props.events
     console.log(eventsList)
+
+    Geocode.setApiKey("AIzaSyChbE9-TiyLNVuUFf8JWSZdMH5PpimKc8c");
+    Geocode.setLanguage("en");
+    // Geocode.setRegion("est");
 
     //CreateEvent const:
     const [title, setTitle]= useState("")
@@ -29,7 +35,8 @@ function EventListComponentFullView(props){
     const [date, setDate]= useState(0)
     const [time, setTime]= useState(0)
     const [description, setDescription]= useState("")
-
+    const [lat, setLat]= useState("")
+    const [lng, setLng]= useState("")
 
     const [open4, setOpen4] = useState(false);
     const handleClickOpen4 = () => {
@@ -40,25 +47,49 @@ function EventListComponentFullView(props){
     };
 
 
-    async function addToFirebase2() {
+    async function addToFirebase2(ltd, lngt) {
+
         try {
             const docRef = await addDoc(collection(db, "Events"), {
                 title: title,
                 venue: location2,
-                date: date,
-                time: time,
+                date1: moment(date).format("DD.MM.YYYY"),
+                time1: time,
                 description: description,
+                lat: ltd,
+                long: lngt,
+                type: ["yoga"]
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
             console.error("Error adding document: ", e);
         }
     };
-    function handleCreate2() {
-        addToFirebase2();
+    async function handleCreate2() {
+
+        await Geocode.fromAddress(location2).then(
+            (response) => {
+                const loc = response.results[0].geometry.location;
+                console.log(loc);
+                // setLat(loc.lat)
+                // setLng(loc.lng)
+
+                addToFirebase2(loc.lat, loc.lng);
+
+
+
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+        setOpen4(false)
+        window.location.reload()
+
         // optionally, you can also navigate to a new page or update the UI after the user is created
     }
 
+    console.log(lat)
 
     return (
 
