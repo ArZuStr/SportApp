@@ -24,6 +24,7 @@ function NonUserEventComponent(props) {
             <Typography variant="h6"> Where: {props.event.venue}</Typography><br/>
             <Typography variant="h6"> When: {props.event.date1} </Typography><br/>
             <Typography variant="h6"> What: {props.event.description} </Typography><br/>
+            <Button variant="contained" size="large">SIGN UP TO JOIN!</Button>
 
         </div>
     )

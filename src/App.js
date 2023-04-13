@@ -31,7 +31,7 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(true);
+    const [userIsLogged, setUserIsLogged] = useState(false);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -55,7 +55,6 @@ function App() {
     const handleWorkout = (event) => {
         setWorkout(event.target.value);
     };
-
 
     //Lisa siia iga väli, et regada FireStores
     // const handleAge = (event) => {
@@ -422,6 +421,5 @@ function App() {
         </div>
     );
 }
-
 
 export default App;
