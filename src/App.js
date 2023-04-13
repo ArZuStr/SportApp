@@ -20,7 +20,7 @@ import EventListComponentFullView from "./EventListComponentFullView";
 import MessageIcon from '@mui/icons-material/Message';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import WB_LOGO1 from './Images/WB_LOGO1.png';
 import WB_LOGO2 from './Images/WB_LOGO2.gif';
@@ -176,7 +176,7 @@ function App() {
 
                 <Box id="eventsBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
                     <Button id="eventsButton" variant="contained" onClick={handleClickOpen}>
-                        <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/> JOIN EVENTS
+                        <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/> JOIN EVENT
                     </Button>
                 </Box>
             </Box>
@@ -190,7 +190,7 @@ function App() {
 
                 <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
                     <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
-                        CREATE EVENT <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
+                        CREATE EVENT <AddCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
                     </Button>
                 </Box>
             </Box>
