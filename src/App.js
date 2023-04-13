@@ -493,6 +493,7 @@ function App() {
                     id="description"
                     label="Description"
                     type="text"
+                    multiline
                     fullWidth
                     variant="standard"
                     onChange={(event) => {setDescription(event.target.value)}}
@@ -518,7 +519,7 @@ function App() {
                 </Button>
             </DialogContent>
             <DialogActions>
-                <Button id="dialogButton" variant="contained" conClick={handleCreate}>Create</Button>
+                <Button id="dialogButton" variant="contained" onClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
 
@@ -536,7 +537,7 @@ function App() {
                     <Button id="dialogButton" variant="contained" onClick={handleClose2}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-            <Dialog open={open3} onClose={handleClose3}  maxWidth="70%" PaperProps={{style: {backgroundColor: '#202020'}}} >
+            <Dialog open={open3} onClose={handleClose3}  maxWidth="400px" PaperProps={{style: {backgroundColor: '#202020'}}} >
                 <DialogTitle></DialogTitle>
                 <DialogContent>
                     {Object.keys(loggedUser).length > 0 && <UserProfile user={loggedUser}/>}
