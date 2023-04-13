@@ -41,7 +41,6 @@ function EventListComponentFullView(props){
     const [lng, setLng]= useState("")
     const [type, setType]= useState([])
 
-
     const [open4, setOpen4] = useState(false);
     const handleClickOpen4 = () => {
         setOpen4(true);
@@ -68,16 +67,13 @@ function EventListComponentFullView(props){
         try {
             const docRef = await addDoc(collection(db, "Events"), data);
             console.log("Document written with ID: ", docRef.id);
-
             setOpen4(false)
             window.location.reload()
-
         } catch (e) {
             console.error("Error adding document: ", e);
         }
     };
     async function handleCreate2() {
-
         let loc = location2 + ", " + city
 
         await Geocode.fromAddress(loc).then(
@@ -86,7 +82,6 @@ function EventListComponentFullView(props){
                 console.log(loc);
                 // setLat(loc.lat)
                 // setLng(loc.lng)
-
                 addToFirebase2(loc.lat, loc.lng);
             },
             (error) => {
@@ -132,7 +127,7 @@ function EventListComponentFullView(props){
                     </Grid>
                 ))}
             </Grid>
-        </Box>)
+        </Box>
 
     <Dialog open={open4} onClose={handleClose4}>
         <DialogTitle>Create an Event</DialogTitle>
