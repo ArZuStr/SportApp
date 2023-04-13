@@ -125,8 +125,40 @@
 
 }
 
+#aboutButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 25px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
+
+}
+
+#aboutBox {
+  padding-left: 60px;
+  padding-bottom: 60px;
+
+}
+
 #LOGO {
   max-height: 150px;
   background: transparent 20%;
+
+}
+
+#LOGO2 {
+  max-height: 200px;
+  /*background: transparent 20%;*/
+
+}
+
+#SLOGAN {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 25px;
+  line-height: 1.8;
+  color: #e6ff00;
+  /*color: white;*/
+  /*opacity: 50%;*/
+  /*transform: rotate(-8deg);*/
 
 }

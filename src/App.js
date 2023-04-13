@@ -21,7 +21,9 @@ import MessageIcon from '@mui/icons-material/Message';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+
 import WB_LOGO1 from './Images/WB_LOGO1.png';
+import WB_LOGO2 from './Images/WB_LOGO2.gif';
 
 //kaisa comment
 function App() {
@@ -101,14 +103,54 @@ function App() {
 
             <Box sx={{
                 position: "absolute",
-                top: "100px",
-                left: "118px",
+                top: "80px",
+                left: "420px",
                 zIndex: "1000",
                 display: "flex",
                 flexDirection: "row",}}>
 
-                <img id="LOGO" src={WB_LOGO1}/>
+                    <Box id="SLOGAN" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                        <p1>
+                            Welcome to Workout Buddy – Join. Train. Repeat.
+                        </p1>
+                    </Box>
+            </Box>
 
+            {/*<Box sx={{*/}
+            {/*    position: "absolute",*/}
+            {/*    top: "100px",*/}
+            {/*    left: "118px",*/}
+            {/*    zIndex: "1000",*/}
+            {/*    display: "flex",*/}
+            {/*    flexDirection: "row",}}>*/}
+
+            {/*    <img id="LOGO" src={WB_LOGO1}/>*/}
+
+            {/*</Box>*/}
+
+            <Box sx={{
+                position: "absolute",
+                top: "3px",
+                left: "60px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <img id="LOGO2" src={WB_LOGO2}/>
+            </Box>
+
+            <Box sx={{position: "absolute",
+                top: "70px",
+                right: "300px",
+                zIndex: "1000",
+                display: "flex",
+                flexDirection: "row",}}>
+
+                <Box id="aboutBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    <Button id="aboutButton" variant="contained" onClick={handleClickOpen}>
+                        ABOUT
+                    </Button>
+                </Box>
             </Box>
 
             <Box sx={{position: "absolute",
@@ -134,7 +176,7 @@ function App() {
 
                 <Box id="eventsBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
                     <Button id="eventsButton" variant="contained" onClick={handleClickOpen}>
-                        <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/> EVENTS
+                        <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/> JOIN EVENTS
                     </Button>
                 </Box>
             </Box>
@@ -148,7 +190,7 @@ function App() {
 
                 <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
                     <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
-                        MESSAGES <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
+                        CREATE EVENT <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
                     </Button>
                 </Box>
             </Box>

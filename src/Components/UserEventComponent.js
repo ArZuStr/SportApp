@@ -20,7 +20,7 @@ function UserEventComponent(props) {
                 {props.event.type.includes("yoga") && <SelfImprovementIcon sx={{ fontSize: 100, color:"#00BFFF", marginTop:"20px", backgroundColor: "white"}} />}
             </Box>
 
-            <Typography fontFamily={"Helvetica Diagonal BQ"} sx={{ textTransform: "uppercase", marginTop:"10px" }}> {props.event.title}</Typography><br/>
+            <Typography fontFamily={"Helvetica Diagonal BQ"} sx={{ textTransform: "uppercase", marginTop: "10px"}}> {props.event.title}</Typography><br/>
             <Typography fontFamily={"Helvetica BQ"}> LOCATION: {props.event.venue}</Typography><br/>
             <Typography fontFamily={"Helvetica BQ"}> WHEN: {props.event.date1} at {props.event.time1} </Typography><br/>
             <Typography fontFamily={"Helvetica BQ"}> WHAT: {props.event.description} </Typography><br/>
