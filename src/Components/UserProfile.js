@@ -21,15 +21,15 @@ export default function UserProfile(props) {
                         <MDBCard fullWidth PaperProps={{ style: { backgroundColor: '#202020' } }}>
                             <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#202020', height: '200px' }}>
                                 <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
-                                    <MDBCardImage src={IMG_6508}
+                                    <MDBCardImage src={props.user.profile_pic}
                                                   alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
                                     <MDBBtn outline color="dark" style={{height: '36px', overflow: 'visible'}}>
                                         Edit profile
                                     </MDBBtn>
                                 </div>
                                 <div className="ms-3" style={{ marginTop: '130px' }}>
-                                    <MDBTypography tag="h5">Roman-Sten</MDBTypography>
-                                    <MDBCardText>Tallinn</MDBCardText>
+                                    <MDBTypography tag="h5">{props.user.name}</MDBTypography>
+                                    <MDBCardText>{props.user.location}</MDBCardText>
                                 </div>
                             </div>
                             <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
@@ -40,7 +40,7 @@ export default function UserProfile(props) {
                                             <br/>
                                             <br/>
                                             <br/>
-                                            Hey everyone, I'm a fitness enthusiast who absolutely loves hitting the pavement and taking my runs outdoors. There's just something so invigorating about feeling the wind in my hair and the sun on my skin as I push my body to new limits. Running is my go-to workout of choice, and I'm always striving to challenge myself and explore new routes.
+                                            {props.user.description}
                                         </MDBCardText>
                                         <MDBCardText className="small text-muted mb-0"></MDBCardText>
                                     </div>

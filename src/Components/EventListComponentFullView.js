@@ -45,7 +45,7 @@ function EventListComponentFullView(props){
                             <Typography variant="h4">Time: {event.time1} </Typography>
                             <br />
                             <Typography variant="h5" sx={{ fontStyle: "italic", m: 1 }}>Description: {event.description} </Typography>
-                            <Button variant="contained" size="large">JOIN!</Button>
+                            <Button variant="contained" id="dialogButton" size="large">JOIN!</Button>
                         </Paper>
                     </Grid>
                 ))}

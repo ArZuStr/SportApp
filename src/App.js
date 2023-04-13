@@ -61,6 +61,7 @@ function App() {
     const [preference, setPreference] = useState(" ");
     const [username, setUserName] = useState(" ");
     const [password1, setPassword1] = useState(" ");
+    const [description, setDescription] = useState(" ");
 
 
     const [newProfilePic, setNewProfilePic] = useState("")
@@ -210,6 +211,7 @@ function App() {
                 age: age,
                 preference: preference,
                 location: location1,
+                description: description,
                 profile_pic: newProfilePic,
             });
             console.log("Document written with ID: ", docRef.id);
@@ -256,6 +258,7 @@ function App() {
             age: age,
             preference: preference,
             location: location1,
+            description: description,
             profile_pic: newProfilePic,
 
         };
@@ -336,7 +339,7 @@ function App() {
                 <Box id="eventsBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
                     <Button id="eventsButton" variant="contained" onClick={handleClickOpen2}>
                         <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
-                            EVENTS
+                           JOIN EVENTS
                     </Button>
                 </Box>
             </Box>
@@ -350,7 +353,7 @@ function App() {
 
                 <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
                     <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
-                        MESSAGES <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
+                        CREATE EVENTS <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
                     </Button>
                 </Box>
             </Box>
@@ -389,14 +392,14 @@ function App() {
             </DialogContent>
             <DialogActions>
                 {/*<Button onClick={handleClose}>Cancel</Button>*/}
-                <Button onClick={handleLogIn}>Log in</Button>
+                <Button id="dialogButton" onClick={handleLogIn}>Log in</Button>
             </DialogActions>
         </Dialog>
-        <Dialog open={open1} onClose={handleClose1}>
-            <DialogTitle>Create an account</DialogTitle>
+        <Dialog open={open1} PaperProps={{style: {backgroundColor: '#fdf8f8',},}} onClose={handleClose1}>
+            <DialogTitle>CREATE PROFILE</DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    Please enter your email address and password to create an account.
+                    SIGN UP TO CREATE AND JOIN EVENTS!
                 </DialogContentText>
                 <TextField
                     autoFocus
@@ -474,15 +477,27 @@ function App() {
                         onChange={(event) => {setPreference(event.target.value)}}
 
                     >
+                        <MenuItem value={"Walking"}>Walking</MenuItem>
+                        <MenuItem value={"Running"}>Running</MenuItem>
                         <MenuItem value={"Volleyball"}>Volleyball</MenuItem>
                         <MenuItem value={"Basketball"}>Basketball</MenuItem>
                         <MenuItem value={"Yoga"}>Yoga</MenuItem>
                         <MenuItem value={"Discgolf"}>Discgolf</MenuItem>
-                        <MenuItem value={"Workout"}>Workout</MenuItem>
 
                     </Select>
 
                 </FormControl>
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="description"
+                    label="Description"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    onChange={(event) => {setDescription(event.target.value)}}
+
+                />
                 <TextField
                     autoFocus
                     margin="dense"
@@ -498,12 +513,12 @@ function App() {
                 <input placeholder="Profile picture" type="file" id="profilePic"
                        onChange={(e) => setProfilePicUpload(e.target.files[0])} />
                 <br />
-                <Button variant="contained" size="small" sx={{marginLeft:"30px", marginTop:"20px"}} onClick={upLoadProfilePic}>
+                <Button variant="contained" id="uploadButton" size="small" sx={{marginLeft:"30px", marginTop:"20px"}} onClick={upLoadProfilePic}>
                     Upload picture
                 </Button>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleCreate}>Create</Button>
+                <Button id="dialogButton" variant="contained" conClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
 
@@ -518,7 +533,7 @@ function App() {
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button id="loginButton" variant="contained" onClick={handleClose2}>Cancel</Button>
+                    <Button id="dialogButton" variant="contained" onClick={handleClose2}>Cancel</Button>
                 </DialogActions>
             </Dialog>
             <Dialog open={open3} onClose={handleClose3}  maxWidth="70%" PaperProps={{style: {backgroundColor: '#202020'}}} >
@@ -527,7 +542,7 @@ function App() {
                     {Object.keys(loggedUser).length > 0 && <UserProfile user={loggedUser}/>}
                 </DialogContent>
                 <DialogActions>
-                    <Button  id="loginButton" variant="contained"onClick={handleClose3}>Cancel</Button>
+                    <Button  id="dialogButton" variant="contained" onClick={handleClose3}>Cancel</Button>
                 </DialogActions>
             </Dialog>
 

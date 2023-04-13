@@ -9,7 +9,7 @@
 }
 #eventsButton {
   font-family: "Helvetica Diagonal BQ";
-  font-size: 25px;
+  font-size: 15px;
   color: #e6ff00;
   background-color: rgb(230, 255, 0, 20%);
   border-radius: 40px;
@@ -22,7 +22,7 @@
 
 #loginButton {
   font-family: "Helvetica Diagonal BQ";
-  font-size: 25px;
+  font-size: 15px;
   color: #e6ff00;
   background-color: rgb(230, 255, 0, 20%);
   border-radius: 40px;
@@ -35,13 +35,29 @@
 
 #chatButton {
   font-family: "Helvetica Diagonal BQ";
-  font-size: 25px;
+  font-size: 15px;
   color: #e6ff00;
   background-color: rgb(230, 255, 0, 20%);
   border-radius: 40px;
 
 }
+#dialogButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 15px;
+  color: #e6ff00;
+  background-color: rgba(17, 16, 16, 0.88);
+  border-radius: 40px;
+}
 
+
+
+#uploadButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 10px;
+  color: #e6ff00;
+  background-color: rgba(17, 16, 16, 0.88);
+  border-radius: 40px;
+}
 #chatBox {
   padding-left: 60px;
   padding-bottom: 60px;
