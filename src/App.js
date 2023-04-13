@@ -46,7 +46,7 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(true);
+    const [userIsLogged, setUserIsLogged] = useState(false);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -311,12 +311,16 @@ function App() {
                     </Button>}
 
 
-                    { userIsLogged === true && <Button variant="contained" onClick={handleClickOpen3}>
+                    { userIsLogged === true && <Button  id="loginButton" variant="contained" onClick={handleClickOpen3}>
+                        <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
+
                         PROFILE
                         {/*<Link to="/users/:userId">Profile</Link>*/}
                     </Button>}
 
-                    { userIsLogged === false &&<Button variant="contained" onClick={handleClickOpen1}>
+                    { userIsLogged === false &&<Button id="loginButton" variant="contained" onClick={handleClickOpen1}>
+                        <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
+
                         SIGN UP
                     </Button>}
                 </Box>
@@ -514,16 +518,16 @@ function App() {
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose2}>Cancel</Button>
+                    <Button id="loginButton" variant="contained" onClick={handleClose2}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-            <Dialog open={open3} onClose={handleClose3} fullWidth maxWidth="100%">
-                <DialogTitle>Profile</DialogTitle>
+            <Dialog open={open3} onClose={handleClose3}  maxWidth="70%" PaperProps={{style: {backgroundColor: '#202020'}}} >
+                <DialogTitle></DialogTitle>
                 <DialogContent>
                     {Object.keys(loggedUser).length > 0 && <UserProfile user={loggedUser}/>}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose3}>Cancel</Button>
+                    <Button  id="loginButton" variant="contained"onClick={handleClose3}>Cancel</Button>
                 </DialogActions>
             </Dialog>
 
