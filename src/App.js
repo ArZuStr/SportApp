@@ -45,7 +45,7 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(false);
+    const [userIsLogged, setUserIsLogged] = useState(true);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -550,7 +550,7 @@ function App() {
                     <Button id="dialogButton" variant="contained" onClick={handleClose2}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-            <Dialog open={open3} onClose={handleClose3}  maxWidth="400px" PaperProps={{style: {backgroundColor: '#202020'}}} >
+            <Dialog open={open3} onClose={handleClose3}  fullWidth maxWidth="lg" PaperProps={{style: {backgroundColor: '#202020'}}} >
                 <DialogTitle></DialogTitle>
                 <DialogContent>
                     {Object.keys(loggedUser).length > 0 && <UserProfile user={loggedUser}/>}
