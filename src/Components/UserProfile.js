@@ -17,7 +17,8 @@ export default function UserProfile(props) {
 
                 <MDBRow className="justify-content-center align-items-center h-100" >
 
-                    <MDBCol lg="9" xl="7">
+                    <MDBCol>
+                        {/*<MDBCol lg="9" xl="7">    */}
                         <MDBCard fullWidth PaperProps={{ style: { backgroundColor: '#202020' } }}>
                             <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#202020', height: '200px' }}>
                                 <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
