@@ -20,27 +20,21 @@ export default function UserProfile(props) {
                     <MDBCol>
                         {/*<MDBCol lg="9" xl="7">    */}
                         <MDBCard fullWidth PaperProps={{ style: { backgroundColor: '#202020' } }}>
-                            <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#202020', height: '200px' }}>
-                                <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
-                                    <MDBCardImage src={props.user.profile_pic}
-                                                  alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                                    <MDBBtn outline color="dark" style={{height: '36px', overflow: 'visible'}}>
-                                        Edit profile
-                                    </MDBBtn>
+                            <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#c9d908', height: '200px' }}>
+                                <div  style={{ width: '200px' }}>
+                                    <MDBCardImage  src={props.user.profile_pic}
+                                                  alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" style={{ width: '200px', zIndex: '1' }} />
                                 </div>
-                                <div className="ms-3" style={{ marginTop: '130px' }}>
-                                    <MDBTypography tag="h5">{props.user.name}</MDBTypography>
-                                    <MDBCardText>{props.user.location}</MDBCardText>
+                                <div className="ms-3" style={{ marginTop: '100px' }}>
+                                    <MDBTypography tag="h3">{props.user.name}</MDBTypography>
+                                    <MDBCardText tag="h3">{props.user.location}</MDBCardText>
                                 </div>
                             </div>
                             <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
                                 <div className="d-flex justify-content-end text-center py-1">
                                     <div>
                                         <MDBCardText >
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
+
                                             {props.user.description}
                                         </MDBCardText>
                                         <MDBCardText className="small text-muted mb-0"></MDBCardText>
@@ -56,6 +50,9 @@ export default function UserProfile(props) {
                                         <MDBCardText className="font-italic mb-0">Email: {props.user.email}</MDBCardText>
                                         <MDBCardText className="font-italic mb-0">Location: {props.user.location}</MDBCardText>
                                     </div>
+                                    <MDBBtn outline color="dark" style={{height: '36px', overflow: 'visible'}}>
+                                        Edit profile
+                                    </MDBBtn>
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center mb-4">
                                     <MDBCardText className="lead fw-normal mb-0">Joined events</MDBCardText>

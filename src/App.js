@@ -46,7 +46,7 @@ function App() {
     const [open3, setOpen3] = useState(false);
     const [open4, setOpen4] = useState(false);
     const [users, setUsers] = useState([]);
-    const [userIsLogged, setUserIsLogged] = useState(true);
+    const [userIsLogged, setUserIsLogged] = useState(false);
     const [events, setEvents] = useState([]);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
@@ -306,6 +306,7 @@ function App() {
                 zIndex: "1000",
                 display: "flex",
                 flexDirection: "row",}}>
+
                 <Box id="loginBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
                     { userIsLogged === false && <Button id="loginButton" variant="contained" onClick={handleClickOpen}>
                         <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
@@ -378,7 +379,7 @@ function App() {
             <Map events={events} userStatus={userIsLogged}/>
         </main>
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Log in</DialogTitle>
+            <DialogTitle style={{ fontWeight: 'bold', fontSize: '30px', color: '#222222' }}>LOG IN</DialogTitle>
             <DialogContent>
 
                 <TextField
@@ -410,11 +411,12 @@ function App() {
             </DialogActions>
         </Dialog>
         <Dialog open={open1} PaperProps={{style: {backgroundColor: '#fdf8f8',},}} onClose={handleClose1}>
-            <DialogTitle>CREATE PROFILE</DialogTitle>
+            <DialogTitle style={{ fontWeight: 'bold', fontSize: '30px', color: '#222222' }}>CREATE PROFILE</DialogTitle>
             <DialogContent>
-                <DialogContentText style="font-weight: bold;">
+                <DialogContentText style={{ fontWeight: 'bold', fontSize: '24px' }}>
                     SIGN UP TO CREATE AND JOIN EVENTS!
                 </DialogContentText>
+
                 <TextField
                     autoFocus
                     margin="dense"
@@ -530,17 +532,17 @@ function App() {
                 <Button id="dialogButton" variant="contained" onClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
-
             <Dialog open={open4} onClose={handleClose4} fullWidth maxWidth="sm" >
                 <DialogContent>
-                    { userIsLogged === false && <DialogContentText>
+                    { userIsLogged === false && <DialogContentText style={{ fontWeight: 'bold', fontSize: '24px', color: '#222222' }}>
                         SIGN UP TO CREATE AND JOIN EVENTS!
                     </DialogContentText>
                     }
                     { userIsLogged === true &&
-                        <DialogContentText> SIGN UP TO CREATE AND JOIN EVENTS!
+                        <div>
+                            <DialogContentText style={{ fontWeight: 'bold', fontSize: '24px' }}>SIGN UP TO CREATE AND JOIN EVENTS!</DialogContentText>
                             <CreateEvent events={events}/>
-                        </DialogContentText>
+                        </div>
                     }
                 </DialogContent>
                 <DialogActions>

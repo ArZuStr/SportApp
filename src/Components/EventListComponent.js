@@ -20,7 +20,7 @@ function EventListComponent(props){
     return (
         <Box >
 
-            <Typography variant="h4" sx={{marginBottom:"20px", margin:"30px"}}>
+            <Typography variant="h4" sx={{marginBottom:"20px", margin:"30px", fontSize: '30px' }}>
                 <strong>EVENTS LIST</strong>
             </Typography>
 
