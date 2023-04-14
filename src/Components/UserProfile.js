@@ -20,7 +20,7 @@ export default function UserProfile(props) {
                     <MDBCol>
                         {/*<MDBCol lg="9" xl="7">    */}
                         <MDBCard fullWidth PaperProps={{ style: { backgroundColor: '#202020' } }}>
-                            <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#c9d908', height: '200px' }}>
+                            <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: 'rgb(170,176,13)', height: '200px' }}>
                                 <div  style={{ width: '200px' }}>
                                     <MDBCardImage  src={props.user.profile_pic}
                                                   alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" style={{ width: '200px', zIndex: '1' }} />
@@ -33,10 +33,10 @@ export default function UserProfile(props) {
                             <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
                                 <div className="d-flex justify-content-end text-center py-1">
                                     <div>
-                                        <MDBCardText >
-
+                                        <MDBCardText style={{textAlign: 'center', justify: 'true'}}>
                                             {props.user.description}
                                         </MDBCardText>
+
                                         <MDBCardText className="small text-muted mb-0"></MDBCardText>
                                     </div>
                                 </div>
