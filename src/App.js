@@ -217,7 +217,7 @@ function App() {
             alert("We had a problem. Try again.");
 
         }
-    };
+    }
 
 
 
@@ -318,7 +318,6 @@ function App() {
 
                     { userIsLogged === true && <Button  id="loginButton" variant="contained" onClick={handleClickOpen3}>
                         <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
-
                         PROFILE
                         {/*<Link to="/users/:userId">Profile</Link>*/}
                     </Button>}
@@ -328,7 +327,8 @@ function App() {
 
                         SIGN UP
                     </Button>}
-
+                </Box>
+            </Box>
             <Box            sx={{position: "absolute",
                             bottom: "10px",
                             right: "10px",
@@ -340,7 +340,10 @@ function App() {
                     <Button id="eventsButton" variant="contained" onClick={handleClickOpen2}>
                         <EmojiEventsIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
                            JOIN EVENTS
-            <Box sx={{position: "absolute",
+                    </Button>
+                </Box>
+            </Box>
+            {/*<Box sx={{position: "absolute",
                 top: "10px",
                 right: "10px",
                 zIndex: "1000",
@@ -352,7 +355,7 @@ function App() {
                         ⊕ PROFILE
                     </Button>
                 </Box>
-            </Box>
+            </Box>*/}
 
             <Box sx={{position: "absolute",
                 bottom: "10px",
@@ -368,10 +371,11 @@ function App() {
                 </Box>
             </Box>
 
+
         </header>
 
         <main>
-            <Map events={events}/>
+            <Map events={events} userStatus={userIsLogged}/>
         </main>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Log in</DialogTitle>

@@ -83,6 +83,8 @@
   color: #e6ff00;
   background-color: rgba(17, 16, 16, 0.88);
   border-radius: 40px;
+}
+
 #eventsButton {
   font-family: "Helvetica Diagonal BQ";
   font-size: 35px;
@@ -93,6 +95,7 @@
 #chatBox {
   padding-left: 60px;
   padding-bottom: 60px;
+}
 
 #eventsBox {
   padding-right: 50px;
@@ -135,9 +138,4 @@
   color: #e6ff00;
   background-color: rgb(230, 255, 0, 20%);
   border-radius: 70px;
-}
-
-#chatBox {
-  padding-left: 50px;
-  padding-bottom: 50px;
 }
