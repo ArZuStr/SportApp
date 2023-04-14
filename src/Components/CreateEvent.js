@@ -154,11 +154,13 @@ function CreateEvent(props) {
                     variant="standard"
                     onChange={(event) => {setType([event.target.value])}}
                 >
-                    <MenuItem value={"volleyball"}>Volleyball</MenuItem>
-                    <MenuItem value={"basketball"}>Basketball</MenuItem>
-                    <MenuItem value={"yoga"}>Yoga</MenuItem>
-                    <MenuItem value={"discgolf"}>Discgolf</MenuItem>
-                    <MenuItem value={"workout"}>Workout</MenuItem>
+                    <MenuItem value={"Volleyball"}>Volleyball</MenuItem>
+                    <MenuItem value={"Basketball"}>Basketball</MenuItem>
+                    <MenuItem value={"Yoga"}>Yoga</MenuItem>
+                    <MenuItem value={"Discgolf"}>Discgolf</MenuItem>
+                    <MenuItem value={"Workout"}>Workout</MenuItem>
+                    <MenuItem value={"Running"}>Running</MenuItem>
+
                 </TextField>
 
 

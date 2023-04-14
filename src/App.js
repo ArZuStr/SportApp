@@ -540,7 +540,7 @@ function App() {
                     }
                     { userIsLogged === true &&
                         <div>
-                            <DialogContentText style={{ fontWeight: 'bold', fontSize: '24px' }}>SIGN UP TO CREATE AND JOIN EVENTS!</DialogContentText>
+                            <DialogContentText style={{ fontWeight: 'bold', fontSize: '24px' }}>CREATE YOUR EVENT</DialogContentText>
                             <CreateEvent events={events}/>
                         </div>
                     }

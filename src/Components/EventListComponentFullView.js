@@ -5,11 +5,15 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+
+
 import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
 import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+
 import Button from "@mui/material/Button";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -108,16 +112,16 @@ function EventListComponentFullView(props){
                     <Grid item sm={12} md={12} key={index} sx={{margin:"30px"}}>
                         <Paper elevation={4} sx={{mt:"30px", pl: "50px",  pr: "50px",  pb: "50px" }}>
                             <Box sx={{ position: "relative", top: 0, right: 0 }}>
-                                {event.type.includes("basketball") && <SportsBasketballIcon sx={{ fontSize: 300, color:"#7c79fb",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}}  />}
-                                {event.type.includes("volleyball") && <SportsVolleyballIcon sx={{ fontSize: 300, color:"#00ced1",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
-                                {event.type.includes("discgolf") && <FiberSmartRecordIcon sx={{ fontSize: 300, color:"#ff4500",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
-                                {event.type.includes("workout") && <FitnessCenterIcon sx={{ fontSize: 300, color:"#fefe33",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
-                                {event.type.includes("yoga") && <SelfImprovementIcon sx={{ fontSize: 300, color:"#00bfff",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
-                                {event.type.includes("running") && <SelfImprovementIcon sx={{ fontSize: 300, color:"#00bfff",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
+                                {event.type.includes("Basketball") && <SportsBasketballIcon sx={{ fontSize: 300, color:"#7c79fb",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}}  />}
+                                {event.type.includes("Volleyball") && <SportsVolleyballIcon sx={{ fontSize: 300, color:"#00ced1",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
+                                {event.type.includes("Discgolf") && <FiberSmartRecordIcon sx={{ fontSize: 300, color:"#ff4500",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
+                                {event.type.includes("Workout") && <FitnessCenterIcon sx={{ fontSize: 300, color:"#fefe33",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
+                                {event.type.includes("Yoga") && <SelfImprovementIcon sx={{ fontSize: 300, color:"#00bfff",marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
+                                {event.type.includes("Running") && <DirectionsRunIcon sx={{ fontSize: 300, color:"#ff0000", marginLeft:"80%", marginTop:"-70px", backgroundColor: "white"}} />}
                             </Box>
                             <Typography variant="h2" sx={{ textTransform: "uppercase", marginTop:"-110px" }}>{event.title} </Typography>
                             <br />
-                            <Typography variant="h4">Venue: {event.venue} </Typography>
+                            <Typography variant="h4">Location: {event.venue} </Typography>
                             <br />
                             <Typography variant="h4">Date: {event.date1} </Typography>
                             <Typography variant="h4">Time: {event.time1} </Typography>
@@ -196,11 +200,12 @@ function EventListComponentFullView(props){
                 variant="standard"
                 onChange={(event) => {setType([event.target.value])}}
             >
-                <MenuItem value={"volleyball"}>Volleyball</MenuItem>
-                <MenuItem value={"basketball"}>Basketball</MenuItem>
-                <MenuItem value={"yoga"}>Yoga</MenuItem>
-                <MenuItem value={"discgolf"}>Discgolf</MenuItem>
-                <MenuItem value={"workout"}>Workout</MenuItem>
+                <MenuItem value={"Volleyball"}>Volleyball</MenuItem>
+                <MenuItem value={"Basketball"}>Basketball</MenuItem>
+                <MenuItem value={"Yoga"}>Yoga</MenuItem>
+                <MenuItem value={"Discgolf"}>Discgolf</MenuItem>
+                <MenuItem value={"Workout"}>Workout</MenuItem>
+                <MenuItem value={"Running"}>Running</MenuItem>
             </TextField>
 
 
