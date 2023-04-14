@@ -412,7 +412,7 @@ function App() {
         <Dialog open={open1} PaperProps={{style: {backgroundColor: '#fdf8f8',},}} onClose={handleClose1}>
             <DialogTitle>CREATE PROFILE</DialogTitle>
             <DialogContent>
-                <DialogContentText>
+                <DialogContentText style="font-weight: bold;">
                     SIGN UP TO CREATE AND JOIN EVENTS!
                 </DialogContentText>
                 <TextField
