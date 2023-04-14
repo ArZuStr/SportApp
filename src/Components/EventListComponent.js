@@ -18,7 +18,7 @@ function EventListComponent(props){
     console.log(eventsList)
 
     return (
-        <Box>
+        <Box >
 
             <Typography variant="h4" sx={{marginBottom:"20px", margin:"30px"}}>
                 <strong>EVENTS LIST</strong>
@@ -43,7 +43,7 @@ function EventListComponent(props){
                             <br />
                             <Typography variant="h5" sx={{ fontStyle: "italic", m: 1 }}>Description: {event.description} </Typography>
                             <br />
-                            <Button variant="contained" size="large">SIGN UP TO JOIN!</Button>
+                            <Button variant="contained" id="dialogButton" size="large">SIGN UP TO JOIN!</Button>
                         </Paper>
                     </Grid>
                 ))}
