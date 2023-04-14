@@ -101,7 +101,7 @@ function EventListComponentFullView(props){
                 <strong>EVENTS LIST</strong>
             </Typography>
 
-            <Button variant="contained" size="large" sx={{marginLeft:"30px"}} onClick={handleClickOpen4}>CREATE AN EVENT</Button>
+            {/*<Button variant="contained" size="large" sx={{marginLeft:"30px"}} onClick={handleClickOpen4}>CREATE AN EVENT</Button>*/}
 
             <Grid container spacing={3}>
                 { eventsList.map((event, index) => (

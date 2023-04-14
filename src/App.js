@@ -33,7 +33,7 @@ import { v4 } from "uuid";
 import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
-
+import CreateEvent from "./Components/CreateEvent";
 
 
 
@@ -44,6 +44,7 @@ function App() {
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
+    const [open4, setOpen4] = useState(false);
     const [users, setUsers] = useState([]);
     const [userIsLogged, setUserIsLogged] = useState(true);
     const [events, setEvents] = useState([]);
@@ -76,9 +77,7 @@ function App() {
                 getDownloadURL(snapshot.ref).then((url) => {
                     setNewProfilePic(url);
                    // setIsProfilePicUploaded(true);
-
 })
-
             }
         )
     }
@@ -88,18 +87,15 @@ function App() {
     //     setAge(event.target.value);
     // };
 
-
 ///handles "LOG IN" dialoq:
     const handleClose = () => {
         setOpen(false);
     };
 
-
 ///Handles the "LOG IN" button:
     const handleClickOpen = () => {
         setOpen(true);
     };
-
 
 ///Handles "SIGN UP" button and opens it:
     const handleClickOpen1 = () => {
@@ -121,9 +117,19 @@ function App() {
         setOpen2(false);
     };
 
+    ///Handles "CREATE EVENT" button:
+    const handleClose4 = () => {
+        setOpen4(false);
+    };
+
 ///Handles "PROFILE" button:
     const handleClickOpen3 = () => {
         setOpen3(true);
+    };
+
+///Handles "CREATE EVENT" button:
+    const handleClickOpen4 = () => {
+        setOpen4(true);
     };
 
 ///Handles "PROFILE" dialog:
@@ -131,13 +137,10 @@ function App() {
         setOpen3(false);
     };
 
-
-
 ///Handles "LOG OUT" button:
     function logUserOut() {
         setUserIsLogged(false)
     }
-
 
 ///Getting info from Firestore:
     async function fetchUsers() {
@@ -281,7 +284,6 @@ function App() {
     // console.log(users)
     // console.log(events)
 
-
     return (
 
         <div style={{ position: "relative", height: "100vh" }}>
@@ -315,7 +317,6 @@ function App() {
                         LOG OUT
                     </Button>}
 
-
                     { userIsLogged === true && <Button  id="loginButton" variant="contained" onClick={handleClickOpen3}>
                         <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
                         PROFILE
@@ -324,7 +325,6 @@ function App() {
 
                     { userIsLogged === false &&<Button id="loginButton" variant="contained" onClick={handleClickOpen1}>
                         <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
-
                         SIGN UP
                     </Button>}
                 </Box>
@@ -365,7 +365,7 @@ function App() {
                 flexDirection: "row",}}>
 
                 <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
-                    <Button id="chatButton" variant="contained" onClick={handleClickOpen}>
+                    <Button id="chatButton" variant="contained" onClick={handleClickOpen4}>
                         CREATE EVENTS <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
                     </Button>
                 </Box>
@@ -423,8 +423,7 @@ function App() {
                     type="text"
                     fullWidth
                     variant="standard"
-                    onChange={(event) => {setUserName(event.target.value)}}
-
+                    onChange={(event) => {setUserName(event.target.value)}}h
                 />
                 <TextField
                     required
@@ -435,7 +434,6 @@ function App() {
                     fullWidth
                     variant="standard"
                     onChange={(event) => {setEmail1(event.target.value)}}
-
                 />
                 <TextField
                     required
@@ -446,7 +444,6 @@ function App() {
                     fullWidth
                     variant="standard"
                     onChange={(event) => {setPassword1(event.target.value)}}
-
                 />
                 <TextField
                     required
@@ -457,7 +454,6 @@ function App() {
                     fullWidth
                     variant="standard"
                     onChange={(event) => {setName(event.target.value)}}
-
                 />
                 <TextField
                     autoFocus
@@ -468,7 +464,6 @@ function App() {
                     fullWidth
                     variant="standard"
                     onChange={(event) => {setLastName1(event.target.value)}}
-
                 />
                 <TextField
                     autoFocus
@@ -535,6 +530,23 @@ function App() {
                 <Button id="dialogButton" variant="contained" onClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
+
+            <Dialog open={open4} onClose={handleClose4} fullWidth maxWidth="sm" >
+                <DialogContent>
+                    { userIsLogged === false && <DialogContentText>
+                        SIGN UP TO CREATE AND JOIN EVENTS!
+                    </DialogContentText>
+                    }
+                    { userIsLogged === true &&
+                        <DialogContentText> SIGN UP TO CREATE AND JOIN EVENTS!
+                            <CreateEvent events={events}/>
+                        </DialogContentText>
+                    }
+                </DialogContent>
+                <DialogActions>
+                    <Button id="dialogButton" variant="contained" onClick={handleClose4}>Cancel</Button>
+                </DialogActions>
+            </Dialog>
 
             <Dialog open={open2} onClose={handleClose2} fullWidth maxWidth="100%">
                 {/*<DialogTitle>Events</DialogTitle>*/}
