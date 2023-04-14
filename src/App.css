@@ -2,37 +2,140 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*.App-logo {*/
+/*  height: 40vmin;*/
+/*  pointer-events: none;*/
+/*}*/
+
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*  .App-logo {*/
+/*    animation: App-logo-spin infinite 20s linear;*/
+/*  }*/
+/*}*/
+
+.full-screen-map {
+  height: 100vh;
+}
+#eventsButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 15px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#eventsBox {
+  padding-right: 60px;
+  padding-bottom: 60px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#loginButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 15px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+#loginBox {
+  padding-right: 60px;
+  padding-top: 60px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#chatButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 15px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 40px;
+
+}
+#dialogButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 15px;
+  color: #e6ff00;
+  background-color: rgba(17, 16, 16, 0.88);
+  border-radius: 40px;
+}
+
+
+/*.App-link {*/
+/*  color: #61dafb;*/
+/*}*/
+
+/*@keyframes App-logo-spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/
+
+.kaisa-popup {
+  width: 20vw;
+}
+
+
+#uploadButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 10px;
+  color: #e6ff00;
+  background-color: rgba(17, 16, 16, 0.88);
+  border-radius: 40px;
+}
+
+#eventsButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 35px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 70px;
+}
+#chatBox {
+  padding-left: 60px;
+  padding-bottom: 60px;
+}
+
+#eventsBox {
+  padding-right: 50px;
+  padding-bottom: 50px;
+}
+
+#loginButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 35px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 70px;
+}
+
+#loginBox {
+  padding-right: 50px;
+  padding-top: 50px;
+}
+
+#LOGO {
+  max-height: 150px;
+  background: transparent 20%;
+
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fbc2eb;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+}
+
+#chatButton {
+  font-family: "Helvetica Diagonal BQ";
+  font-size: 35px;
+  color: #e6ff00;
+  background-color: rgb(230, 255, 0, 20%);
+  border-radius: 70px;
 }
