@@ -21,10 +21,11 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import MessageIcon from '@mui/icons-material/Message';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import AddIcon from '@mui/icons-material/Add';
+import InfoIcon from '@mui/icons-material/Info';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
@@ -34,6 +35,7 @@ import EventListComponent from "./Components/EventListComponent";
 import EventListComponentFullView from "./Components/EventListComponentFullView";
 import UserProfile from "./Components/UserProfile";
 import CreateEvent from "./Components/CreateEvent";
+import {ExitToApp} from "@mui/icons-material";
 
 
 
@@ -45,6 +47,9 @@ function App() {
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
     const [open4, setOpen4] = useState(false);
+    const [open5, setOpen5] = useState(false);
+
+
     const [users, setUsers] = useState([]);
     const [userIsLogged, setUserIsLogged] = useState(false);
     const [events, setEvents] = useState([]);
@@ -122,6 +127,13 @@ function App() {
         setOpen4(false);
     };
 
+    const handleClose5= () => {
+        setOpen5(false);
+    };
+
+    const handleClickOpen5 = () => {
+        setOpen5(true);
+    };
 ///Handles "PROFILE" button:
     const handleClickOpen3 = () => {
         setOpen3(true);
@@ -308,8 +320,14 @@ function App() {
                 flexDirection: "row",}}>
 
                 <Box id="loginBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
+                    <Button id="loginButton" variant="contained" onClick={handleClickOpen5}>
+                        <InfoIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
+
+                        ABOUT
+                    </Button>
+
                     { userIsLogged === false && <Button id="loginButton" variant="contained" onClick={handleClickOpen}>
-                        <AccountCircleIcon sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
+                        <ExitToApp sx={{ fontSize: 40, color:"#e6ff00",marginRight:"15px"}}/>
                        LOG IN
                     </Button>}
 
@@ -367,7 +385,7 @@ function App() {
 
                 <Box id="chatBox" display="flex" flexDirection="row" justifyContent="flex-end">
                     <Button id="chatButton" variant="contained" onClick={handleClickOpen4}>
-                        CREATE EVENTS <MessageIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
+                        CREATE EVENTS <AddIcon sx={{ fontSize: 40, color:"#e6ff00",marginLeft:"15px"}}/>
                     </Button>
                 </Box>
             </Box>
@@ -378,7 +396,24 @@ function App() {
         <main>
             <Map events={events} userStatus={userIsLogged}/>
         </main>
-        <Dialog open={open} onClose={handleClose}>
+            <Dialog open={open5} PaperProps={{style: {backgroundColor: '#fdf8f8',},}} onClose={handleClose5}>
+                <DialogTitle style={{ textAlign: "center", fontWeight: 'bold', fontSize: '30px', color: '#222222' }}>ABOUT</DialogTitle>
+                <DialogContent>
+                    <DialogContentText style={{ fontWeight: 'bold', fontSize: '15px', textAlign: 'justify', color: 'rgba(34,34,34,0.98)' }}>
+                        <br/>
+                        Our website is designed to make it easy for you to create and join sports events in your community. Whether you are looking for a weekly running group, a game of basketball with friends, or a yoga class in the park, you can find it here.<br/><br/>
+                        Not only do we make it easy to find and join sports events, but we also provide a platform to help you connect with workout buddies who share your interests and fitness goals. Working out with a buddy outside can be a fun and effective way to stay motivated and reach your fitness goals.<br/><br/>
+                        So whether you're an experienced athlete or just starting your fitness journey, we invite you to explore our website, join an event, and connect with others who share your passion for sports and fitness. Let's create a healthier and happier world together! <br/>
+                        <hr style={{marginBottom: '20px'}} />
+
+                        Feel free to contact us if You have any inquiries. We would love to hear from You! <br/><br/>
+                        <span style={{ fontWeight: 'bold', fontSize: '18px' }}>wb@fitness.com</span><br/><br/>Roman-Sten, Kaisa and Arzu
+                    </DialogContentText>
+
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={open} onClose={handleClose}>
             <DialogTitle style={{ fontWeight: 'bold', fontSize: '30px', color: '#222222' }}>LOG IN</DialogTitle>
             <DialogContent>
 

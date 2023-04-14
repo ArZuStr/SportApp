@@ -13,13 +13,14 @@ function UserEventComponent(props) {
 
     return (
         <div>
-            <Box sx={{ position: "relative", top: 0, right: 0 }}>
-                {props.event.type.includes("Basketball") && <SportsBasketballIcon sx={{ fontSize: 100, color:"#7C79FB", backgroundColor: "white"}} />}
-                {props.event.type.includes("Volleyball") && <SportsVolleyballIcon sx={{ fontSize: 100, color:"#00CED1", backgroundColor: "white"}} />}
-                {props.event.type.includes("Discgolf") && <FiberSmartRecordIcon sx={{ fontSize: 100, color:"#FF4500", backgroundColor: "white"}} />}
-                {props.event.type.includes("Yoga") && <SelfImprovementIcon sx={{ fontSize: 100, color:"#00bfff", backgroundColor: "white"}} />}
-                {props.event.type.includes("Workout") && <FitnessCenterIcon sx={{ fontSize: 100, color:"#FEFE33", backgroundColor: "white"}} />}
-                {props.event.type.includes("Running") && <DirectionsRunIcon sx={{ fontSize: 100, color:"#ff0000", backgroundColor: "white"}} />}
+            <Box sx={{ position: "relative", top: 0, right: "20px" }}>
+                {props.event.type.includes("Basketball") && <SportsBasketballIcon sx={{ fontSize: 100, color:"#7C79FB", marginLeft:"70%", backgroundColor: "white"}} />}
+                {props.event.type.includes("Volleyball") && <SportsVolleyballIcon sx={{ fontSize: 100, color:"#00CED1", marginLeft:"70%", backgroundColor: "white"}} />}
+                {props.event.type.includes("Discgolf") && <FiberSmartRecordIcon sx={{ fontSize: 100, color:"#FF4500", marginLeft:"70%", backgroundColor: "white"}} />}
+                {props.event.type.includes("Workout") && <FitnessCenterIcon sx={{ fontSize: 100, color:"#FEFE33", marginLeft:"70%", backgroundColor: "white"}} />}
+                {props.event.type.includes("Yoga") && <SelfImprovementIcon sx={{ fontSize: 100, color:"#00bfff", marginLeft:"70%", backgroundColor: "white"}} />}
+                {props.event.type.includes("Running") && <DirectionsRunIcon sx={{ fontSize: 100, color:"#ff0000", marginLeft:"70%", backgroundColor: "white"}} />}
+
             </Box>
 
             <Typography variant="h6" sx={{ textTransform: "uppercase", marginTop:"10px" }}>
@@ -37,7 +38,7 @@ function UserEventComponent(props) {
             <Typography variant="subtitle1">
                 <Box component="span" sx={{ fontWeight: 'bold' }}>Description:</Box> {props.event.description}
             </Typography>
-            <Button variant="contained" size="large">JOIN!</Button>
+            <Button id="dialogButton" variant="contained" size="medium">JOIN!</Button>
 
         </div>
     )
