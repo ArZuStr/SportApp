@@ -3,9 +3,6 @@ import './App.css';
 import 'leaflet/dist/leaflet.css'
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import L from 'leaflet'
-import Dialog from "@mui/material/Dialog";
-import Typography from "@mui/material/Typography";
-import DialogContent from "@mui/material/DialogContent";
 import NonUserEventComponent from "./Components/NonUserEventComponent";
 import UserEventComponent from "./Components/UserEventComponent";
 

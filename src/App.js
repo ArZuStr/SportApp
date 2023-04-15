@@ -7,8 +7,6 @@ import {collection, getDocs, addDoc} from "firebase/firestore";
 // import { Routes, Route } from "react-router-dom";
 import Map from "./Map"
 
-
-//import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -175,7 +173,6 @@ function App() {
             })
     }
 
-
     useEffect(() => {
         // Update the data (users. events) from Firestore
         fetchUsers();
@@ -234,8 +231,6 @@ function App() {
         }
     }
 
-
-
 ///This function is to manage "create" button that creates new user with a profile:
     function handleCreate() {
 
@@ -257,7 +252,6 @@ function App() {
             alert('Password must be at least 8 characters long and contain a mix of letters, numbers, and symbols');
             return;
         }
-
 
         //If all correct, sends info to database:
         const foundObject1 = {
@@ -362,19 +356,6 @@ function App() {
                     </Button>
                 </Box>
             </Box>
-            {/*<Box sx={{position: "absolute",
-                top: "10px",
-                right: "10px",
-                zIndex: "1000",
-                display: "flex",
-                flexDirection: "row",}}>
-
-                <Box id="loginBox" display="flex" flexDirection="row" justifyContent="flex-end" sx={{width:"100%"}}>
-                    <Button id="loginButton" variant="contained" onClick={handleClickOpen}>
-                        ⊕ PROFILE
-                    </Button>
-                </Box>
-            </Box>*/}
 
             <Box sx={{position: "absolute",
                 bottom: "10px",
@@ -389,8 +370,6 @@ function App() {
                     </Button>
                 </Box>
             </Box>
-
-
         </header>
 
         <main>
@@ -521,7 +500,6 @@ function App() {
                         label="Workout Type"
 
                         onChange={(event) => {setPreference(event.target.value)}}
-
                     >
                         <MenuItem value={"Walking"}>Walking</MenuItem>
                         <MenuItem value={"Running"}>Running</MenuItem>
@@ -567,6 +545,7 @@ function App() {
                 <Button id="dialogButton" variant="contained" onClick={handleCreate}>Create</Button>
             </DialogActions>
         </Dialog>
+
             <Dialog open={open4} onClose={handleClose4} fullWidth maxWidth="sm" >
                 <DialogContent>
                     { userIsLogged === false && <DialogContentText style={{ fontWeight: 'bold', fontSize: '24px', color: '#222222' }}>
@@ -580,9 +559,6 @@ function App() {
                         </div>
                     }
                 </DialogContent>
-                <DialogActions>
-                    <Button id="dialogButton" variant="contained" onClick={handleClose4}>Cancel</Button>
-                </DialogActions>
             </Dialog>
 
             <Dialog open={open2} onClose={handleClose2} fullWidth maxWidth="100%">
@@ -599,6 +575,7 @@ function App() {
                     <Button id="dialogButton" variant="contained" onClick={handleClose2}>Cancel</Button>
                 </DialogActions>
             </Dialog>
+
             <Dialog open={open3} onClose={handleClose3}  fullWidth maxWidth="md" PaperProps={{style: {backgroundColor: '#202020'}}} >
                 <DialogTitle></DialogTitle>
                 <DialogContent>
@@ -608,8 +585,6 @@ function App() {
                     <Button  id="dialogButton" variant="contained" onClick={handleClose3}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-
-
         </div>
     );
 }

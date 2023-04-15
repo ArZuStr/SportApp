@@ -50,7 +50,6 @@ function EventListComponent(props){
                         </Paper>
                     </Grid>
                 ))}
-
             </Grid>
         </Box>
     );

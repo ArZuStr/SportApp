@@ -5,9 +5,6 @@ import event1 from "../Icons/event1.PNG";
 import event2 from "../Icons/event 2.PNG";
 import event3 from "../Icons/event3.PNG";
 import event4 from "../Icons/event4.PNG";
-import IMG_6508 from "../Icons/IMG_6508.jpg";
-
-
 
 
 export default function UserProfile(props) {
@@ -86,5 +83,5 @@ export default function UserProfile(props) {
        // </div>
 
     );
-            }
+}
 

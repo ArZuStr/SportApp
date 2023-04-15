@@ -1,14 +1,9 @@
 import React, {useState} from "react";
 import moment from "moment";
 
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
 import TextField from "@mui/material/TextField";
-import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "../config/firebase";
@@ -72,25 +67,17 @@ function CreateEvent(props) {
             (response) => {
                 const loc = response.results[0].geometry.location;
                 console.log(loc);
-                // setLat(loc.lat)
-                // setLng(loc.lng)
                 addToFirebase2(loc.lat, loc.lng);
             },
             (error) => {
                 console.error(error);
             }
         );
-        //setOpen4(false)
     }
 
 
     return (
-
-        // // <div>
-        // {/*<Dialog>*/}
-        // {/*    <DialogTitle>Create an Event</DialogTitle>*/}
-        // {/*    <DialogContent>*/}
-    <Box>
+            <Box>
                 <TextField
                     autoFocus
                     margin="dense"
@@ -168,10 +155,7 @@ function CreateEvent(props) {
                     <Button onClick={handleClose4}>Cancel</Button>
                     <Button onClick={handleCreate2}>Create</Button>
                 </DialogActions>
-    </Box>
-// {/*            </DialogContent>*/}
-// {/*        </Dialog>*/}
-// {/*</div>*/}
+            </Box>
 
 )}
 export default CreateEvent;
