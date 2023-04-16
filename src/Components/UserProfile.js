@@ -18,9 +18,9 @@ export default function UserProfile(props) {
                         {/*<MDBCol lg="9" xl="7">    */}
                         <MDBCard fullWidth PaperProps={{ style: { backgroundColor: '#202020' } }}>
                             <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: 'rgb(170,176,13)', height: '200px' }}>
-                                <div  style={{ width: '200px' }}>
+                                <div  style={{ width: '200px'}}>
                                     <MDBCardImage  src={props.user.profile_pic}
-                                                  alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" style={{ width: '200px', zIndex: '1' }} />
+                                                  alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" style={{ width: '170px', height: '200px', zIndex: '1' }} />
                                 </div>
                                 <div className="ms-3" style={{ marginTop: '100px' }}>
                                     <MDBTypography tag="h3">{props.user.name}</MDBTypography>
