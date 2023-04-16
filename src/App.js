@@ -599,7 +599,7 @@ function App() {
                     <Button id="dialogButton" variant="contained" onClick={handleClose2}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-            <Dialog open={open3} onClose={handleClose3}  fullWidth maxWidth="lg" PaperProps={{style: {backgroundColor: '#202020'}}} >
+            <Dialog open={open3} onClose={handleClose3}  fullWidth maxWidth="md" PaperProps={{style: {backgroundColor: '#202020'}}} >
                 <DialogTitle></DialogTitle>
                 <DialogContent>
                     {Object.keys(loggedUser).length > 0 && <UserProfile user={loggedUser}/>}
