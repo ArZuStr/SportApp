@@ -20,7 +20,7 @@ export default function UserProfile(props) {
                             <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: 'rgb(170,176,13)', height: '200px' }}>
                                 <div  style={{ width: '200px' }}>
                                     <MDBCardImage  src={props.user.profile_pic}
-                                                  alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" style={{ width: '200px', zIndex: '1' }} />
+                                                  alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" style={{width: '150px', height: "180px", zIndex: '1' }} />
                                 </div>
                                 <div className="ms-3" style={{ marginTop: '100px' }}>
                                     <MDBTypography tag="h3">{props.user.name}</MDBTypography>
@@ -47,7 +47,7 @@ export default function UserProfile(props) {
                                         <MDBCardText className="font-italic mb-0">Email: {props.user.email}</MDBCardText>
                                         <MDBCardText className="font-italic mb-0">Location: {props.user.location}</MDBCardText>
                                     </div>
-                                    <MDBBtn outline color="dark" style={{height: '36px', overflow: 'visible'}}>
+                                    <MDBBtn outline color="dark" style={{height: '36px', overflow: 'visible', marginTop:"50px"}}>
                                         Edit profile
                                     </MDBBtn>
                                 </div>
