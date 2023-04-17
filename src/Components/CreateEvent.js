@@ -152,8 +152,8 @@ function CreateEvent(props) {
 
 
                 <DialogActions>
-                    <Button onClick={handleClose4}>Cancel</Button>
-                    <Button onClick={handleCreate2}>Create</Button>
+                    {/*<Button id="dialogButton" onClick={handleClose4}>Cancel</Button>*/}
+                    <Button id="dialogButton" onClick={handleCreate2}>Create</Button>
                 </DialogActions>
             </Box>
 

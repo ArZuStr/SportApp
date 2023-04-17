@@ -397,7 +397,7 @@ function App() {
             <Map events={events} userStatus={userIsLogged}/>
         </main>
             <Dialog open={open5} PaperProps={{style: {backgroundColor: '#fdf8f8',},}} onClose={handleClose5}>
-                <DialogTitle style={{ textAlign: "center", fontWeight: 'bold', fontSize: '30px', color: '#222222' }}>ABOUT</DialogTitle>
+                <DialogTitle style={{ textAlign: "center", fontWeight: 'bold', fontSize: '30px', color: '#222222' }}>ABOUT WORKOUT BUDDY</DialogTitle>
                 <DialogContent>
                     <DialogContentText style={{ fontWeight: 'bold', fontSize: '15px', textAlign: 'justify', color: 'rgba(34,34,34,0.98)' }}>
                         <br/>
@@ -407,7 +407,7 @@ function App() {
                         <hr style={{marginBottom: '20px'}} />
 
                         Feel free to contact us if You have any inquiries. We would love to hear from You! <br/><br/>
-                        <span style={{ fontWeight: 'bold', fontSize: '18px' }}>wb@fitness.com</span><br/><br/>Roman-Sten, Kaisa and Arzu
+                        <span style={{ fontWeight: 'bold', fontSize: '18px' }}>wb@fitness.com</span><br/><br/>Arzu, Kaisa and Roman-Sten
                     </DialogContentText>
 
                 </DialogContent>
@@ -581,7 +581,7 @@ function App() {
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button id="dialogButton" variant="contained" onClick={handleClose4}>Cancel</Button>
+                    {/*<Button id="dialogButton" variant="contained" onClick={handleClose4}>Cancel</Button>*/}
                 </DialogActions>
             </Dialog>
 

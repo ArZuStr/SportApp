@@ -44,7 +44,7 @@
 
 #chatButton {
   font-family: "Helvetica Diagonal BQ";
-  font-size: 15px;
+  font-size: 25px;
   color: #e6ff00;
   background-color: rgb(230, 255, 0, 20%);
   border-radius: 40px;
@@ -52,7 +52,7 @@
 }
 #dialogButton {
   font-family: "Helvetica Diagonal BQ";
-  font-size: 13px;
+  font-size: 15px;
   color: #e6ff00;
   background-color: rgba(17, 16, 16, 0.88);
   border-radius: 40px;
